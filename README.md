@@ -17,6 +17,7 @@ Don't forget to give this project a ⭐
 - [Installation](#installation)
 - [Dependencies](#dependencies)
 - [Getting Started](#getting_started)
+- [Project Design](#project-design)
 - [Framework Structure](#framework-structure)
 - [Logs and Reporting](#logs-reporting)
 - [Contributing](#contributing)
@@ -105,8 +106,14 @@ or
 
 ---
 
+## 🏗️ Project Design <a name = "project-design"></a>
+ ![Selenium Datadriven Framework](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/Automation_Diagram.png)
+
+
+---
+
 ## 🏗️ Framework Structure <a name = "framework-structure"></a>
- ![Selenium Datadriven Framework](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/Automation_FileStructure.pdf)
+- [Framework Detail](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/Automation_FileStructure.png)
  ### 📚 Reusable framework utilitites
  
  <h5>./src/main/java/com/browsers</h5>
