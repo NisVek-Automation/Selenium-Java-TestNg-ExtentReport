@@ -1,6 +1,5 @@
-# Selenium Datadriven Framework - UI Testing
-![Selenium Datadriven Framework](https://github.com/NisVek-Automation/NisVek-Automation/blob/main/JavaSeleniumDataDriven4.gif)
-
+# Selenium Automation Framework - UI Testing
+![Selenium Datadriven Framework](https://github.com/NisVek-Automation/NisVek-Automation/blob/main/readmeResources/JavaSeleniumDataDriven.gif)
 Don't forget to give this project a ⭐
 <div align="center">
 
@@ -13,6 +12,7 @@ Don't forget to give this project a ⭐
 
 - [About](#about)
 - [Features](#features)
+- [Limitations](#limitations)
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Dependencies](#dependencies)
@@ -35,12 +35,19 @@ This is a UI test Automation framework to start the automation testing using ope
 ## ✨ Features <a name = "features"></a>
 
 Features Supported by Framework :
-1. Capable for UI testing.
-2. Use testing data from Excel file for data driven testing.
-3. Separate log file for investigation of issue
-4. Extent reporting with detail error and screenshots attached.
-5. Sending mail after test suite run.
-6. Custom configuration for framework.
+- Capable for UI testing.
+- Use testing data from Excel file for data driven testing.
+- Separate log file for investigation of issue
+- Extent reporting with detail error and screenshots attached.
+- Supports cross browsers Testing.
+- Custom configuration for framework.
+
+---
+
+## ✨ Limitations <a name = "limitations"></a>
+
+- Device testing such as Mobile/Tablet.
+- Parallel testing.
 
 ---
   
@@ -70,7 +77,7 @@ Features Supported by Framework :
 - [Maven Integration for Eclipse](https://marketplace.eclipse.org/content/maven-integration-eclipse-luna-and-newer)
 
 
-All set!!! Just download the Project folder...
+All set!!! 
 
 ---
 
@@ -86,16 +93,20 @@ How to use this framework?
 1. Clone the repository to your workspace.
 
 ```sh
-git clone https://github.com/NisVek-Automation/Selenium-Java-TestNG-POM-DataDrivenFramework.git
+git clone https://github.com/NisVek-Automation/Miro-Selenium-Java.git
 ```
 
-2. The DataSheet.xlsx under the src/test/resources folder contains data driven testing
-3. Run the TestNG.xml file. You can even run as mvn test which will trigger the TestNG.xml
+2. The DataSheet.xlsx under the src/test/resources folder contains data driven testing. Mark the 'y' in exection column to exceute that data set for testing.
+3. Right click on the TestNG.xml file and Run as TestNG Suite.
+or
+4. You can even run as mvn test which will trigger the TestNG.xml
+5. Find the detailed log report in the log/TestLog.log file
+6. Automatically extent report should open once exection completed.
 
 ---
 
 ## 🏗️ Framework Structure <a name = "framework-structure"></a>
- 
+ ![Selenium Datadriven Framework](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/Automation_FileStructure.pdf)
  ### 📚 Reusable framework utilitites
  
  <h5>./src/main/java/com/browsers</h5>
