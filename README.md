@@ -98,11 +98,10 @@ git clone https://github.com/NisVek-Automation/Miro-Selenium-Java.git
 ```
 
 2. The DataSheet.xlsx under the src/test/resources folder contains data driven testing. Mark the 'y' in exection column to exceute that data set for testing.
-3. Right click on the TestNG.xml file and Run as TestNG Suite.
-or
-4. You can even run as mvn test which will trigger the TestNG.xml
-5. Find the detailed log report in the log/TestLog.log file
-6. Automatically extent report should open once exection completed.
+3. Right click on the TestNG.xml file and Run as TestNG Suite. You can even run as mvn test which will trigger the TestNG.xml
+4. Find the detailed log report in the log/TestLog.log file
+5. Automatically extent report should open once exection completed. Extent report can also find in reports folder.
+6. Screenshots for investigation can find under the screenShots folder.
 
 ---
 
@@ -113,7 +112,7 @@ or
 ---
 
 ## 🏗️ Framework Structure <a name = "framework-structure"></a>
-- [Framework Detail](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/Automation_FileStructure.png)
+- [Framework Detail](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/Automation_FileStructure.pdf)
  ### 📚 Reusable framework utilitites
  
  <h5>./src/main/java/com/browsers</h5>
