@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Miro E2E Test Suite">
+
+	<listeners>
+		<listener class-name="com.listeners.ListenerClass" />
+		<listener class-name="com.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<parameter name="browserName" value="chrome" />
+	<test name="E2ETest">
+		<classes>
+			<class name="com.testcases.SignUpTest" />
+			<class name="com.testcases.SignupUsingSocialTest" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
