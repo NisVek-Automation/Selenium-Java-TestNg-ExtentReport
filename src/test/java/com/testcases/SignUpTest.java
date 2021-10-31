@@ -66,15 +66,5 @@ public class SignUpTest extends BaseTest {
 		}
 	}
 
-	/**
-	 * The dataprovider method collects data from ExcelSheet.
-	 * @return testRecords -> It returns 2D string object which contains data
-	 *         from ExcelSheet.
-	 */
-	@DataProvider(name = "signupDataProvider")
-	public String[][] signupDataProvider() {
-		ExcelSheetHelper helper = new ExcelSheetHelper();
-		String[][] testRecords = helper.getDataFromSheet("SignUpTest");
-		return testRecords;
-	}
+	
 }
