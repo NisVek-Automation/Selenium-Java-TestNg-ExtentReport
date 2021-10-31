@@ -6,8 +6,6 @@ logs/
 logs/*
 screenShots/*
 screenShots/
-report/
-/report/*
 /.classpath
 /.settings/*
 /.project
