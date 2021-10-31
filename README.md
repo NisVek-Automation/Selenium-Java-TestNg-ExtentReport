@@ -122,7 +122,7 @@ git clone https://github.com/NisVek-Automation/Miro-Selenium-Java.git
 ---
 
 ## 🏗️ Framework Structure <a name = "framework-structure"></a>
-
+![Framework](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/AutomationFramework.jpg)
 Find the framework structure here as well 👉 `documents/Automation_FileStructure.pdf`👈
 
  ### 📚 Reusable framework utilitites
