@@ -57,7 +57,7 @@ Features Supported by Framework :
 
 - Testcases : All positive and negetive test scenarios examples are vailable in `documents/Miro_E2E_TestCases.xlsx` file, sheetname is `Singup-US0001`.
 - Test matrix : Examples of coverage in `documents/Miro_E2E_TestCases.xlsx` file, sheetname is `Singup-US0001`.
-- Test HTML report :HTML report will be available inside the `reports` folder after execution.
+- Test HTML report : HTML report will be available inside the `reports` folder after execution.
 - Test log report : Detailed log will be available inside the `logs/testLog.log` after execution.
 - Test Screenshots : All testcases screenshots inside the `screenShots` folder in respective testcase folder.
 ---
@@ -111,8 +111,8 @@ git clone https://github.com/NisVek-Automation/Miro-Selenium-Java.git
 3. Mark the 'y' in `exection` column to exceute that data set for testing.
 4. Right click on the `TestNG.xml` file and Run as `TestNG Suite`. You can even run as `mvn test` which will trigger the TestNG.xml file.
 5. Find the detailed log report in the `log/TestLog.log` file.
-6. Extent report can find in `reports` folder.
-7. Screenshots for investigation can find under the `screenShots` folder.
+6. Find the Extent report in `reports` folder.
+7. Find Screenshots for investigation in `screenShots` folder.
 
 ---
 
@@ -123,7 +123,7 @@ git clone https://github.com/NisVek-Automation/Miro-Selenium-Java.git
 
 ## 🏗️ Framework Structure <a name = "framework-structure"></a>
 ![Framework](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/AutomationFramework.jpg)
-Find the framework structure here as well 👉 `documents/Automation_FileStructure.pdf`👈
+
 
  ### 📚 Reusable framework utilitites
  
