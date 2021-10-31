@@ -1,6 +1,5 @@
-# Selenium Datadriven Framework - UI Testing
-![Selenium Datadriven Framework](https://github.com/NisVek-Automation/NisVek-Automation/blob/main/JavaSeleniumDataDriven4.gif)
-
+# Selenium Automation Framework - UI Testing
+![Selenium Datadriven Framework](https://github.com/NisVek-Automation/NisVek-Automation/blob/main/readmeResources/JavaSeleniumDataDriven.gif)
 Don't forget to give this project a ⭐
 <div align="center">
 
@@ -13,10 +12,13 @@ Don't forget to give this project a ⭐
 
 - [About](#about)
 - [Features](#features)
+- [Limitations](#limitations)
+- [QA Documents](#document)
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Dependencies](#dependencies)
 - [Getting Started](#getting_started)
+- [Project Design](#project-design)
 - [Framework Structure](#framework-structure)
 - [Logs and Reporting](#logs-reporting)
 - [Contributing](#contributing)
@@ -27,7 +29,7 @@ Don't forget to give this project a ⭐
 ## 🕹 About <a name = "about"></a>
 
 <p align="left"> 
-This is a UI test Automation framework to start the automation testing using open source tools.
+This is an UI test Automation framework to start the automation testing using open source tools.
 </p>
 
 ---
@@ -35,13 +37,29 @@ This is a UI test Automation framework to start the automation testing using ope
 ## ✨ Features <a name = "features"></a>
 
 Features Supported by Framework :
-1. Capable for UI testing.
-2. Use testing data from Excel file for data driven testing.
-3. Separate log file for investigation of issue
-4. Extent reporting with detail error and screenshots attached.
-5. Sending mail after test suite run.
-6. Custom configuration for framework.
+- Capable for UI testing.
+- Use testing data from Excel file for data driven testing.
+- Separate log file for investigation of issue.
+- Extent reporting with detail error and screenshots attached.
+- Supports cross browsers Testing.
+- Custom configuration for framework.
 
+---
+
+## ✨ Limitations <a name = "limitations"></a>
+
+- Device testing such as Mobile/Tablet.
+- Parallel testing.
+
+---
+
+## ✨ QA documents <a name = "document"></a>
+
+- Testcases : All positive and negetive test scenarios examples are vailable in `documents/Miro_E2E_TestCases.xlsx` file, sheetname is `Singup-US0001`.
+- Test matrix : Examples of coverage in `documents/Miro_E2E_TestCases.xlsx` file, sheetname is `Singup-US0001`.
+- Test HTML report :HTML report will be available inside the `reports` folder after execution.
+- Test log report : Detailed log will be available inside the `logs/testLog.log` after execution.
+- Test Screenshots : All testcases screenshots inside the `screenShots` folder in respective testcase folder.
 ---
   
 ## 🖥️ Technologies <a name = "technologies"></a>
@@ -70,7 +88,7 @@ Features Supported by Framework :
 - [Maven Integration for Eclipse](https://marketplace.eclipse.org/content/maven-integration-eclipse-luna-and-newer)
 
 
-All set!!! Just download the Project folder...
+All set!!! 
 
 ---
 
@@ -86,87 +104,106 @@ How to use this framework?
 1. Clone the repository to your workspace.
 
 ```sh
-git clone https://github.com/NisVek-Automation/Selenium-Java-TestNG-POM-DataDrivenFramework.git
+git clone https://github.com/NisVek-Automation/Miro-Selenium-Java.git
 ```
 
-2. The DataSheet.xlsx under the src/test/resources folder contains data driven testing
-3. Run the TestNG.xml file. You can even run as mvn test which will trigger the TestNG.xml
+2. The `DataSheet.xlsx` under the `src/test/resources` folder is used for data driven testing. 
+3. Mark the 'y' in `exection` column to exceute that data set for testing.
+4. Right click on the `TestNG.xml` file and Run as `TestNG Suite`. You can even run as `mvn test` which will trigger the TestNG.xml file.
+5. Find the detailed log report in the `log/TestLog.log` file.
+6. Extent report can find in `reports` folder.
+7. Screenshots for investigation can find under the `screenShots` folder.
+
+---
+
+## 🏗️ Project Design <a name = "project-design"></a>
+ ![Selenium Datadriven Framework](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/Automation_Diagram.png)
 
 ---
 
 ## 🏗️ Framework Structure <a name = "framework-structure"></a>
- 
+
+Find the framework structure here as well 👉 `documents/Automation_FileStructure.pdf`👈
+
  ### 📚 Reusable framework utilitites
  
- <h5>./src/main/java/com/browsers</h5>
+ <h5>src/main/java/com/browser</h5>
   
 | Files     | Description |
 | ---         | ---       |
-| BrowserFactory | Represents Factory design pattern for the Browsers         |
-| BrowserManager | Represents a Browsers Parent abstract class         |
-| ChromeBrowser     | Represents the Chrome browsers functionality   |
-| FirefoxBrowser    | Represents the Firefox browsers functionality    |
-| DriverManager    | Represents Driver setting and getting    |
+| BrowserManager.java | Parent abstract class for browsers.         |
+| ChromeBrowser.java | Represents a Google Chrome Browser related activities.         |
+| EdgeBrowser.java     | Represents an Edge Browser related activities.   |
+| DriverManager.java    | Handles the thread local for the Webdriver type.    |
+| Driver.java    | Used for selecting browser type, open the URL activities, etc.    |
+
+<h5>src/main/java/com/constants</h5>
+  
+| Files     | Description |
+| ---         | ---       |
+| AppConstant.java |  Represents application specific property/constant values.        |
+| FrameworkConstant.java |  Represents framework specific property/constant values.        |
+
+<h5>src/main/java/com/utils</h5>
+  
+| Files     | Description |
+| ---         | ---       |
+| SeleniumFunctionHelper.java     | Common functionality for framework such as click, enter data in field, etc.    |
+| PropertyFileHelper.java    | Represents the property file reader.  |
+| ExceptionHelper.java | Exception helper to create the custom exception.        |
+| ExcelSheetHelper.java     | Read the test data from excel file for testing.   |
+| CommonFunctionHelper.java    | Common functionality for framework such as takescreenshot, etc.    |
+
+<h5>src/main/java/com/pages</h5>
+  
+| Files     | Description |
+| ---         | ---       |
+| BasePage.java |  Represents POM parent class.         |
+| HomePage.java     |  Represent POM for Home page.  |
+| LoginPage.java  |  Represents Login page - Page Object model class  |
+| SignupPage.java    | Represent Signup page. - Page Object model class    |
+| SignUpWithSocialPage.java    | Represent POM for all social Signup activities.  |
 
 
-<h5>src/main/java/com/listener</h5>
+<h5>src/main/java/com/listeners</h5>
   
 | Files     | Description |
 | ---         | ---       |
-| AnnotationTransformer |  Represents test annotation transformer listener        |
-| ListenerClass |  Represents a Listner derived from ITestListener        |
-| RetryFailedTestCases     | Represents how many time failure tests need to rerun |
-| WebEventListener    |  Represents log the webdriver related UI activities   |
+| AnnotationTransformer.java |  Represents annotation transformer which helps during rerun the test cases.        |
+| ListenerClass.java |  Represents a ListenerClass derived from ITestListener.        |
+| RetryFailedTestCases.java     | Represents how many time failure tests need to rerun |
   
-<h5>./src/main/java/com/pages/</h5>
   
-| Files     | Description |
-| ---         | ---       |
-| BasePageObject |  Represents a PageObject model Parent class         |
-| HomePage     |  Represents Home page - Page Object model class  |
-| LoginPage    |  Represents Login page - Page Object model class  |
-| ProductPage    | Represents Product page - Page Object model class    |
-  
-<h5>./src/main/java/com/reports/</h5>
+<h5>src/main/java/com/reports</h5>
   
 | Files     | Description |
 | ---         | ---       |
-| ExtentManager |  Represents ExtentManager setting and getting         |
-| ExtentReport     |  Represents ExtentReport related activities  |
-| LogStatus    |  Represents Logging activities for Extent, log4j and TestNG report  |
-  
-<h5>./src/main/java/com/utils/</h5>
-  
-| Files     | Description |
-| ---         | ---       |
-| CommonFunctionHelper     | Represents basic framework activities such as sending mail, take screenshots, etc.    |
-| ConstantHelper    | Represents framework specific property/constant values  |
-| ExcelSheetHelper | Represents a Excelsheet helper to read the Testing data for datadriven        |
-| ExceptionHelper     | Represents custom exception helper   |
-| ReadPropertyFileHelper    | Represents the property file reader to read the framework settings   |
-| SelniumFunctionHelper    | Represents the selenium functionalities    |
+| ExtentManager.java |  Handles the thread local for the ExtentTest type.         |
+| LogStatus.java     |  Provides log in report and log file.  |
+| ExtentReport.java    |  ExtentReport functionality.  |
   
 
 ### ⏳ Application under Testcases ⌛
   
-  <h5>./src/test/java/TestCases/</h5>
+  <h5>src/test/java/testcases</h5>
   
 | Files     | Description |
 | ---         | ---       |
-| BaseTest |  Represent TestCases Parent class        |
-| LoginProcess     |  Represent TestCases for Login process.  |
+| BaseTest.java |  Parent class of testcases.        |
+| SignUpTest.java     |  Signup related testcases.  |
+| SignupUsingSocialTest.java     |  Signup process with social related testcases.  |
 
 
 ### 📉Configuration and 📋Test Datasheet
   
-  <h5>./src/test/resources/</h5>
+  <h5>src/test/resources</h5>
   
 | Files     | Description |
 | ---         | ---       |
-| DataSheet.xlsx |  To store the Datadriven testing data        |
-| extentreport.xml   |  ExtentReport configuration file for extent reporting|
-| log4j2.properties |  log4j configuration file for logging perpose        |
-| TestRunDetails.properties     |  Setting to run the framework use friendly  |
+| TestData.xlsx |  Testcases use the data for testing from here.        |
+| extentreport.xml   |  ExtentReport settings. |
+| log4j2.properties |  log4j settings.        |
+| TestRunDetails.properties     |  Framework related settings.  |
 
 ---
 
@@ -176,9 +213,9 @@ git clone https://github.com/NisVek-Automation/Selenium-Java-TestNG-POM-DataDriv
   
 | Folder/File     | Description |
 | ---         | ---       |
-| ./logs/TestLog.log |  Detailed log is available in logs folder        |
-| ./reports/Extent-TestReport.html   |  Detailed html report is available in reports folder |
-| ./screenShots/<TestCaseName>/ |  Each testcases screenshots available in respective testcase name folder       |
+| logs/TestLog.log |  Detailed execution log.        |
+| reports/Extent-TestReport.html  |  Execution Extent report in HTML. |
+| screenShots/<TestCaseName>/ |  Each testcases screenshots available in respective testcase name folder       |
 
 Note: For understanding purpose, all above files avaialbe in this repository.
 
