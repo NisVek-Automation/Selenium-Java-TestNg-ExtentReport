@@ -21,22 +21,18 @@ public class SignUpTest extends BaseTest {
 	@Test(dataProvider = "signupDataProvider", description = "TC001_SignUpFreeFromMenu")
 	public void TC001_SignUpFreeFromMenu(String testCaseId, String name,
 			String workEmail, String password, String status) {
-		System.out.println(testCaseId + ":" +name + ":" +workEmail + ":" +password+ ":" +status);
 		
 		LogStatus.pass(testCaseId + " is started.", false);
 		homePage = new HomePage();
 
 		homePage.clickMenuSignUp();
 		signUp(name, workEmail, password, status);
-		
 	}
 	
 	/**Test the singup process using 'Sign up free' button from home page at bottom.*/
 	@Test(dataProvider = "signupDataProvider", description = "TC002_SignUpFreeBottom")
 	public void TC002_SignUpFreeBottom(String testCaseId, String name,
 			String workEmail, String password, String status) {
-		System.out.println(testCaseId + ":" +name + ":" +workEmail + ":" +password+ ":" +status);
-		
 		
 		LogStatus.pass(testCaseId + " is started.", false);
 		homePage = new HomePage();

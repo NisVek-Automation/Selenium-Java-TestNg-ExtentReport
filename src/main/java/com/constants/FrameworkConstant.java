@@ -24,7 +24,7 @@ public final class FrameworkConstant {
 	public static final String DataSheetFileName = resourcePath + "TestData.xlsx";
 
 	// Wait timing
-	public static final Duration waitTime = Duration.ofMillis(10000);
+	public static final Duration waitTime = Duration.ofMillis(13000);
 	
 	// Screenshot paths
 	public static final String screenShotPath = projectPath + File.separator + "screenShots" + File.separator;

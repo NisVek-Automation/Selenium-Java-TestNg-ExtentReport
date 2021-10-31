@@ -25,7 +25,7 @@ public class ExcelSheetHelper {
 	/** This variable represent the sheet inside the ExcelSheet. */
 	public Sheet sheet;
 	/** This variable represent the row inside the ExcelSheet. */
-	public Row rows;
+	public Row excelRows;
 	/** This variable represent the cell inside the ExcelSheet. */
 	public Cell cell;
 
@@ -47,13 +47,13 @@ public class ExcelSheetHelper {
 	 * Data.
 	 * 
 	 * @param sheetName -> sheetName from ExcelSheet.
-	 * @return dataSets -> It returns each cell data in form of 2D string array.
+	 * @return result -> It returns each cell data in form of 2D string array.
 	 */
 	@SuppressWarnings({ "deprecation" })
 	public String[][] getDataFromSheet(String sheetName) {
-		String dataSets[][] = null;
+		String result[][] = null;
 		try {
-			// get workbook based on ExcelSheet type
+			
 			getWorkBook();
 			// get sheet from excel workbook
 			sheet = workbook.getSheet(sheetName);
@@ -61,33 +61,33 @@ public class ExcelSheetHelper {
 			int totalRow = sheet.getPhysicalNumberOfRows();
 			// count number of active columns in row
 			int totalColumn = sheet.getRow(0).getLastCellNum();
-			int actualRows = getRowCount(sheet, totalRow);
+			int selectedRowCount = getExecutionRowCount(sheet, totalRow);
 			// Create array of rows and column
-			dataSets = new String[actualRows][totalColumn - 1];
-			int iterateActualRow = 0;
+			result = new String[selectedRowCount][totalColumn - 1];
+			int iterateOutputRow = 0;
 			// This for loop will run on rows of excel
-			for (int i = 1; i < totalRow; i++) {
-				rows = sheet.getRow(i);
-				if (rows.getCell(0).toString().equalsIgnoreCase("Y")) {
+			for (int row = 1; row < totalRow; row++) {
+				excelRows = sheet.getRow(row);
+				if (excelRows.getCell(0).toString().equalsIgnoreCase("Y")) {
 					// This for loop will run on columns of excel
-					for (int j = 1; j < totalColumn; j++) {
+					for (int col = 1; col < totalColumn; col++) {
 						// get Cell method will get cell
-						cell = rows.getCell(j);
+						cell = excelRows.getCell(col);
 						if (cell == null || cell.getCellType() == CellType.BLANK)
-							dataSets[iterateActualRow][j - 1] = "";
+							result[iterateOutputRow][col - 1] = "";
 						else
-							dataSets[iterateActualRow][j - 1] = cell.getStringCellValue().toString();
+							result[iterateOutputRow][col - 1] = cell.getStringCellValue().toString();
 					}
-					iterateActualRow++;
+					iterateOutputRow++;
 				}
 			}
-			return dataSets;
+			return result;
 		} catch (Exception e) {
 			System.out.println("Exception in reading Xlxs file" + e.getMessage());
 			e.printStackTrace();
 		}
 		
-		return dataSets;
+		return result;
 	}
 	
 	/**
@@ -96,11 +96,11 @@ public class ExcelSheetHelper {
 	 * @param sheet -> sheet object from where row needs to collect.
 	 * @return rowCount -> row count which has status 'y'.
 	 */
-	private int getRowCount(Sheet sheet, int row){
+	private int getExecutionRowCount(Sheet sheet, int rows){
 		int rowCount = 0;
-		for (int i = 0; i < row; i++) {
-			rows = sheet.getRow(i);
-			if (rows.getCell(0).toString().equalsIgnoreCase("Y")) {
+		for (int row = 0; row < rows; row++) {
+			excelRows = sheet.getRow(row);
+			if (excelRows.getCell(0).toString().equalsIgnoreCase("Y")) {
 				rowCount++;
 			}
 		}

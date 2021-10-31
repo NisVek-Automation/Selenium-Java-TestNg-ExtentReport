@@ -1,6 +1,7 @@
 package com.pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -18,7 +19,9 @@ public class BasePage {
 	public SeleniumFunctionHelper seleniumHelper = new SeleniumFunctionHelper();
 	
 	@FindBy(css=".signup__title-form") public WebElement lblPageHeader;
-	@FindBy(xpath = "//*[@id='Sign-up-free']") public WebElement btnMenuSignUp;
+	@FindAll({@FindBy(xpath = "//*[@id='Sign-up-free']"), 
+		@FindBy(xpath = "//*[@aria-label='Header']//div[text()='Sign Up']")}) 
+	public WebElement btnMenuSignUp;
 	
 	protected BasePage(){
 		PageFactory.initElements(DriverManager.getDriver(), this);

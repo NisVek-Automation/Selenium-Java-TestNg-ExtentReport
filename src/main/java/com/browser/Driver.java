@@ -36,7 +36,7 @@ public class Driver {
 				driver = new ChromeBrowser().createDriver();
 			}
 			DriverManager.setWebDriver(driver);
-			LogStatus.pass("Driver is initialized.");
+			LogStatus.pass("Driver is initialized with browser : " + browser);
 	}
 
 	/**

@@ -1,0 +1,46 @@
+[INFO ] 2021-10-31 15:31:09.298 [main] LogStatus - Extent Report is initialized.
+[INFO ] 2021-10-31 15:31:12.186 [main] LogStatus - Driver is initialized with browser : chrome
+[INFO ] 2021-10-31 15:31:16.335 [main] LogStatus - Browser is opened and maximize successfully.
+[INFO ] 2021-10-31 15:31:16.335 [main] LogStatus - Driver is initialized Successfully.
+[INFO ] 2021-10-31 15:31:16.509 [main] LogStatus - ********** TC001_SignUpFreeFromMenu is started successfully. **********
+[INFO ] 2021-10-31 15:31:16.510 [main] LogStatus - TCID_001 is started.
+[INFO ] 2021-10-31 15:31:16.775 [main] LogStatus - Clicked on Signup free button on menu bar
+[INFO ] 2021-10-31 15:31:19.238 [main] LogStatus - Signup page displayed successfully.
+[INFO ] 2021-10-31 15:31:19.361 [main] LogStatus - Entered the Name Successfully : Nisha
+[INFO ] 2021-10-31 15:31:19.481 [main] LogStatus - Entered the Work Email Successfully : PmcRHUjd@gmail.com
+[INFO ] 2021-10-31 15:31:19.624 [main] LogStatus - Entered the password Successfully : abcABC@123
+[INFO ] 2021-10-31 15:31:19.674 [main] LogStatus - Clicked successfully on Terms and condition.
+[INFO ] 2021-10-31 15:31:22.542 [main] LogStatus - Clicked successfully on Get started now button.
+[INFO ] 2021-10-31 15:31:22.609 [main] LogStatus - Email Confirmation page is displayed successfully.
+[INFO ] 2021-10-31 15:31:22.610 [main] LogStatus - TC001_SignUpFreeFromMenu test case is passed.
+[INFO ] 2021-10-31 15:31:22.733 [main] LogStatus - ********** TC001_SignUpFreeFromMenu is successful. **********
+[INFO ] 2021-10-31 15:31:27.491 [main] LogStatus - Browser is closed successfully.
+[INFO ] 2021-10-31 15:31:28.666 [main] LogStatus - Driver is initialized with browser : chrome
+[INFO ] 2021-10-31 15:31:32.492 [main] LogStatus - Browser is opened and maximize successfully.
+[INFO ] 2021-10-31 15:31:32.492 [main] LogStatus - Driver is initialized Successfully.
+[INFO ] 2021-10-31 15:31:32.674 [main] LogStatus - ********** TC002_SignUpFreeBottom is started successfully. **********
+[INFO ] 2021-10-31 15:31:32.674 [main] LogStatus - TCID_001 is started.
+[INFO ] 2021-10-31 15:31:32.896 [main] LogStatus - Clicked on Signup free button.
+[INFO ] 2021-10-31 15:31:37.986 [main] LogStatus - Signup page displayed successfully.
+[INFO ] 2021-10-31 15:31:38.095 [main] LogStatus - Entered the Name Successfully : Nisha
+[INFO ] 2021-10-31 15:31:38.220 [main] LogStatus - Entered the Work Email Successfully : ONqRQyAL@gmail.com
+[INFO ] 2021-10-31 15:31:38.355 [main] LogStatus - Entered the password Successfully : abcABC@123
+[INFO ] 2021-10-31 15:31:38.411 [main] LogStatus - Clicked successfully on Terms and condition.
+[INFO ] 2021-10-31 15:31:41.193 [main] LogStatus - Clicked successfully on Get started now button.
+[INFO ] 2021-10-31 15:31:41.252 [main] LogStatus - Email Confirmation page is displayed successfully.
+[INFO ] 2021-10-31 15:31:41.253 [main] LogStatus - TC002_SignUpFreeBottom test case is passed.
+[INFO ] 2021-10-31 15:31:41.369 [main] LogStatus - ********** TC002_SignUpFreeBottom is successful. **********
+[INFO ] 2021-10-31 15:31:46.104 [main] LogStatus - Browser is closed successfully.
+[INFO ] 2021-10-31 15:31:47.247 [main] LogStatus - Driver is initialized with browser : chrome
+[INFO ] 2021-10-31 15:31:51.912 [main] LogStatus - Browser is opened and maximize successfully.
+[INFO ] 2021-10-31 15:31:51.912 [main] LogStatus - Driver is initialized Successfully.
+[INFO ] 2021-10-31 15:31:52.068 [main] LogStatus - ********** TC01_SignupUsingExternal_Google is started successfully. **********
+[INFO ] 2021-10-31 15:31:52.332 [main] LogStatus - Clicked on Start a Whiteboard button.
+[INFO ] 2021-10-31 15:31:54.379 [main] LogStatus - Signup page displayed successfully.
+[INFO ] 2021-10-31 15:31:54.426 [main] LogStatus - Clicked successfully on google Signup button.
+[INFO ] 2021-10-31 15:31:55.060 [main] LogStatus - Clicked successfully on Terms and condition.
+[INFO ] 2021-10-31 15:31:56.535 [main] LogStatus - Clicked successfully on google Signup button.
+[INFO ] 2021-10-31 15:31:56.548 [main] LogStatus - Google Signin page displayed successfully.
+[INFO ] 2021-10-31 15:31:56.549 [main] LogStatus - TC01_SignupUsingExternal_Google test case is passed.
+[INFO ] 2021-10-31 15:31:56.709 [main] LogStatus - ********** TC01_SignupUsingExternal_Google is successful. **********
+[INFO ] 2021-10-31 15:32:01.420 [main] LogStatus - Browser is closed successfully.
