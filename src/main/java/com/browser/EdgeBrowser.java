@@ -15,9 +15,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 */
 public class EdgeBrowser extends BrowserManager{
 	
-	/** This is FirefoxOption instance to set the options for Firefox Browser */
-	private FirefoxOptions options;
-	
 	/**
 	 * This method helps to setup the Edge driver for Testing.
 	 * @return driver -> It returns the Edge type WebDriver.
