@@ -42,7 +42,7 @@ public class LogStatus {
 		ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.PASS, message);
 		if(isScreenShotRequired) {
 			ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.PASS, message,
-					ExtentManager.getExtTest().addBase64ScreenShot("data:image/png;base64,"+CommonFunctionHelper.getBase64Image(CommonFunctionHelper.pullScreenshotPath())));
+					ExtentManager.getExtTest().addBase64ScreenShot("data:image/png;base64,"+CommonFunctionHelper.getBase64Image(CommonFunctionHelper.takeScreenshotAndPullPath())));
 		}
 		log.info(message);
 		Reporter.log(message);
@@ -77,7 +77,7 @@ public class LogStatus {
 		ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.FAIL, message);
 		if(isScreenShotRequired) {
 			ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.FAIL, message,
-					ExtentManager.getExtTest().addBase64ScreenShot("data:image/png;base64,"+CommonFunctionHelper.getBase64Image(CommonFunctionHelper.pullScreenshotPath())));
+					ExtentManager.getExtTest().addBase64ScreenShot("data:image/png;base64,"+CommonFunctionHelper.getBase64Image(CommonFunctionHelper.takeScreenshotAndPullPath())));
 		}
 		log.error(message);
 		Reporter.log(message);

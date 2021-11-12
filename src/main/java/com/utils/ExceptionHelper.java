@@ -5,7 +5,7 @@ package com.utils;
  * @author Nisha
  * @version 1.0
  */
-public final class ExceptionHelper extends Exception {
+public final class ExceptionHelper extends RuntimeException {
 
   /**
    * Constructs a checked standard Java exception with the specified cause and a detail message.

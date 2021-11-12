@@ -27,6 +27,7 @@ import org.testng.Reporter;
 
 import com.browser.DriverManager;
 import com.constants.FrameworkConstant;
+import com.enums.PropertyConfig;
 import com.listeners.ListenerClass;
 //import com.listener.ListenerClass;
 import com.reports.ExtentReport;
@@ -41,47 +42,44 @@ import com.reports.LogStatus;
  * @author Nisha Vekariya
  * @version 1.0
  */
-public class CommonFunctionHelper {
+public final class CommonFunctionHelper {
 
-	public static String screenshotPath = PropertyFileHelper.get("ScreenshotPath");
-
-	/**
-	 * Takes screenshot
-	 */
-	public static void takeScreenshot() {
-		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
-		try {
-			if (screenshotPath.equals("")) {
-				FileUtils.copyFile(scrFile,
-						new File(FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName())));
-			} else {
-				FileUtils.copyFile(scrFile, new File(
-						FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName(), screenshotPath)));
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	private CommonFunctionHelper(){
+		//Avoid creating the object of this class.
 	}
-
+	
+	/** Takes screenshot  */
+	public static void takeScreenshot() {
+		takeScreenshotAndGetTargetPath();
+	}
+	
 	/**
 	 * Captures screenshot and returns the screenshot path.
 	 * @return destination -> return the screenshot path.
 	 */
-	public static String pullScreenshotPath() {
-		String destination = null;
+	public static String takeScreenshotAndPullPath() {
+		return takeScreenshotAndGetTargetPath();
+	}
+	
+	/**
+	 * Captures screenshot and returns the screenshot path.
+	 * @return destination -> return the screenshot path.
+	 */
+	private static String takeScreenshotAndGetTargetPath() {
 		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
+		String targetPath = null;
 		try {
-			if (screenshotPath.equals("")) {
-				destination = FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName());
-				FileUtils.copyFile(scrFile, new File(destination));
+			if (PropertyFileHelper.get(PropertyConfig.SCREENSHOTPATH.toString()).equals("")) {
+				targetPath = FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName());
 			} else {
-				destination = FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName(), screenshotPath);
-				FileUtils.copyFile(scrFile, new File(destination));
+				targetPath = FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName(), 
+								PropertyFileHelper.get(PropertyConfig.SCREENSHOTPATH.toString()));
 			}
-		} catch (Exception e) {
+			FileUtils.copyFile(scrFile,new File(targetPath));
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return destination;
+		return targetPath;
 	}
 
 	/**
@@ -108,10 +106,9 @@ public class CommonFunctionHelper {
 	 * @return time -> It returns time in specific format.
 	 */
 	public static String getCurrentDateTimeFormate() {
-		// GEt the specific date formate
 		DateFormat dateFormat = new SimpleDateFormat("_yyyy-MM-dd_HH-mm-ss");
-		Calendar cal = Calendar.getInstance();
-		String time = "" + dateFormat.format(cal.getTime());
+		Calendar calendar = Calendar.getInstance();
+		String time = "" + dateFormat.format(calendar.getTime());
 		return time;
 	}
 
@@ -127,8 +124,7 @@ public class CommonFunctionHelper {
 	 * This method open the report automatically.
 	 */
 	public static void openReport() {
-		// Open the report automatically
-		if (PropertyFileHelper.get("openTestResult").equalsIgnoreCase("yes")) {
+		if (PropertyFileHelper.get(PropertyConfig.OPENTESTRESULT.toString()).equalsIgnoreCase("yes")) {
 			File htmlFile = new File(ExtentReport.extentreportpath);
 			try {
 				Desktop.getDesktop().browse(htmlFile.toURI());
@@ -142,8 +138,8 @@ public class CommonFunctionHelper {
 	 * This method generates the random emailid.
 	 * @return return the generated random mail.
 	 */
-	public static String generateRandomMail(){
-		String randomestring=RandomStringUtils.randomAlphabetic(8);
+	public static String generateRandomMail(int numberOfDigits){
+		String randomestring=RandomStringUtils.randomAlphabetic(numberOfDigits);
 		return randomestring+"@gmail.com";
 	}
 

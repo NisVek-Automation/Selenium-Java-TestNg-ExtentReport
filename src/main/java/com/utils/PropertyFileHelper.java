@@ -1,6 +1,7 @@
 package com.utils;
 
 import java.io.FileInputStream;
+import java.util.Objects;
 import java.util.Properties;
 
 import com.constants.FrameworkConstant;
@@ -19,21 +20,30 @@ public class PropertyFileHelper {
 	 */
 	public static String get(String propertyname) {
 		
-		String propertyValue=null;
+		String propertyValue="";
 		Properties property = new Properties();
-		try {
-			FileInputStream file = new FileInputStream(FrameworkConstant.propertyFilePath);
+		try(FileInputStream file = new FileInputStream(FrameworkConstant.propertyFilePath);) {
 			property.load(file);
 			propertyValue = property.getProperty(propertyname);
-			if(propertyValue==null) {
-				throw new Exception("Property named "+propertyname+ "not found");
-			}
+			checkPropertyValueNull(propertyname, propertyValue);
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			throw new ExceptionHelper("Exception while reading data for Property name " + propertyname + 
+					" . Please check configuration property file.");
 		}
-		
 		return propertyValue;
+	}
+	
+	/**
+	 * Verify the null value for property value, else throw the exception.
+	 * @param propertyname -> name of property
+	 * @return propertyValue -> value of property
+	 */
+	private static void checkPropertyValueNull(String propertyname, String propertyValue){
+		if(Objects.isNull(propertyValue)){
+			throw new ExceptionHelper("Property name " + propertyname + 
+					" is not found. Please check configuration property file TestRunDetails.properties");
+		}
 	}
 	
 	/**
@@ -43,14 +53,13 @@ public class PropertyFileHelper {
 	 */
 	public static void set(String propertyname, String propertyValue){
 		//Set the property
-		if(propertyValue != null || propertyValue != ""){
+		if(propertyValue != null ){
 			Properties property = new Properties();
-			try {
-				FileInputStream file = new FileInputStream(FrameworkConstant.propertyFilePath);
+			try(FileInputStream file = new FileInputStream(FrameworkConstant.propertyFilePath)){
 				property.load(file);
 				property.setProperty(propertyname, propertyValue);
 			}catch(Exception e) {
-				e.printStackTrace();
+				throw new ExceptionHelper("Exception while getting data from the property file.");
 			}
 		}
 	}

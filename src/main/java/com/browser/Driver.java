@@ -1,6 +1,8 @@
 package com.browser;
 
 import org.openqa.selenium.WebDriver;
+
+import com.enums.PropertyConfig;
 import com.reports.LogStatus;
 import com.utils.PropertyFileHelper;
 
@@ -10,18 +12,16 @@ import com.utils.PropertyFileHelper;
  * @version 1.0
 */
 public class Driver {
-
-	public WebDriver driver = null;
-
+	
 	/**
 	 * Initialize the driver and open the url operation.
-	 * @param browser -> browser name using that can create the driver.
+	 * @param browserName -> browser name using that can create the driver.
 	 */
-	private Driver(String browser) {
-		getBrowserDriver(browser);
-		driver.manage().deleteAllCookies();
-		driver.manage().window().maximize();
-		driver.get(PropertyFileHelper.get("Url"));
+	private Driver(String browserName) {
+		selectDriverType(browserName);
+		DriverManager.getDriver().manage().deleteAllCookies();
+		DriverManager.getDriver().manage().window().maximize();
+		DriverManager.getDriver().get(PropertyFileHelper.get(PropertyConfig.URL.toString()));
 		LogStatus.pass("Browser is opened and maximize successfully.");
 	}
 
@@ -29,7 +29,8 @@ public class Driver {
 	 * Select the driver based on selected browser.
 	 * @param browser -> browser name using that can create the driver.
 	 */
-	private void getBrowserDriver(String browser) {
+	private void selectDriverType(String browser) {
+		WebDriver driver=null;
 			if (browser.equalsIgnoreCase("edge")) {
 				driver = new EdgeBrowser().createDriver();
 			} else {
@@ -41,11 +42,11 @@ public class Driver {
 
 	/**
 	 * Initialize the driver based on selected browser and open the url operation.
-	 * @param browser -> browser name using that can create the driver.
+	 * @param browserName -> browser name using that can create the driver.
 	 */
-	public static void initialize(String browser) {
+	public static void initialize(String browserName) {
 		if (DriverManager.getDriver() == null){
-				new Driver(browser);
+				new Driver(browserName);
 		}
 		LogStatus.pass("Driver is initialized Successfully.");
 	}
@@ -57,7 +58,7 @@ public class Driver {
 		if (DriverManager.getDriver() != null) {
 			DriverManager.getDriver().close();
 			DriverManager.getDriver().quit();
-			DriverManager.setWebDriver(null);
+			DriverManager.unload();
 		}
 		LogStatus.pass("Browser is closed successfully.");
 	}

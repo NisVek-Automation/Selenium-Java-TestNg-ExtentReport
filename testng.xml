@@ -9,7 +9,7 @@
 	
 	<!-- Supported browsers : chrome/edge -->
 	<parameter name="browserName" value="chrome" />
-	<test name="E2ETest">
+	<test name="E2ETest" thread-count="2" parallel="methods">
 		<classes>
 			<class name="com.testcases.SignUpTest" />
 			<class name="com.testcases.SignupUsingSocialTest" />

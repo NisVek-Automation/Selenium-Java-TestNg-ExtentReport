@@ -3,6 +3,7 @@ package com.listeners;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
+import com.enums.PropertyConfig;
 import com.reports.LogStatus;
 import com.utils.PropertyFileHelper;
 
@@ -17,7 +18,7 @@ public class RetryFailedTestCases implements IRetryAnalyzer {
 	/** Variable to keep counter of retry */
 	private int retryCount = 0;
 	/** Variable to define max retry count */
-	private int maxRetryCount = Integer.parseInt(PropertyFileHelper.get("NoOfRetries"));
+	private int maxRetryCount = Integer.parseInt(PropertyFileHelper.get(PropertyConfig.NUMBEROFENTRIES.toString()));
 	
 	/**
 	 * This method decides how many times a test needs to be rerun. TestNg will

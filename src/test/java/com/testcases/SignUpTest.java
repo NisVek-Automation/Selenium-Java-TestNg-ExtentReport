@@ -10,7 +10,7 @@ import com.utils.CommonFunctionHelper;
 import com.utils.ExcelSheetHelper;
 import com.utils.ExceptionHelper;
 
-public class SignUpTest extends BaseTest {
+public final class SignUpTest extends BaseTest {
 	
 	HomePage homePage=null;
 	SignupPage signupPage =null;
@@ -30,7 +30,7 @@ public class SignUpTest extends BaseTest {
 	}
 	
 	/**Test the singup process using 'Sign up free' button from home page at bottom.*/
-	@Test(dataProvider = "signupDataProvider", description = "TC002_SignUpFreeBottom")
+	//@Test(dataProvider = "signupDataProvider", description = "TC002_SignUpFreeBottom")
 	public void TC002_SignUpFreeBottom(String testCaseId, String name,
 			String workEmail, String password, String status) {
 		
@@ -49,7 +49,7 @@ public class SignUpTest extends BaseTest {
 		Assert.assertTrue(signupPage.isSignupPage(), "Signup page not displayed Successfully.");
 
 		if(!workEmail.isEmpty()){
-			workEmail= CommonFunctionHelper.generateRandomMail();
+			workEmail= CommonFunctionHelper.generateRandomMail(8);
 		}
 		signupPage.enterName(name)
 				.enterWorkEmail(workEmail)
@@ -66,5 +66,7 @@ public class SignUpTest extends BaseTest {
 		}
 	}
 
-	
+	private SignUpTest(){
+		//restrict to create the object of this class.
+	}
 }

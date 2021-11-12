@@ -37,7 +37,7 @@ public final class FrameworkConstant {
 	}
 
 	// Extent reporting
-	public static final String extentreportPath = projectPath + File.separator + "reports" + File.separator;
+	public static final String extentreportPath = projectPath + File.separator + "report" + File.separator;
 	public static final String editExtentreportPath = extentreportPath + "Extent-TestReport.html";
 	public static final String extentConfigPath = resourcePath + "extentreport.xml";
 	public static final String newExtentReportPath(String currentDate) {

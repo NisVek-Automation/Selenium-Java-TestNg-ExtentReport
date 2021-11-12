@@ -90,7 +90,8 @@ public class SeleniumFunctionHelper {
 	 * @param locator -> WebElement which need to highlight.
 	 */
 	public void highlightElement(WebElement element) {
-		((JavascriptExecutor)DriverManager.getDriver()).executeScript("arguments[0].style.border='3px solid red'", element);
+		((JavascriptExecutor)DriverManager.getDriver())
+		.executeScript("arguments[0].style.border='3px solid red'", element);
 	}
 
 	/**

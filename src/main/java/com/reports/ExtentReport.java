@@ -7,6 +7,7 @@ import java.util.Date;
 //import com.constants.Constants;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.constants.FrameworkConstant;
+import com.enums.PropertyConfig;
 import com.utils.PropertyFileHelper;
 
 /**
@@ -28,7 +29,7 @@ public class ExtentReport {
 		SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy_ hh_mm_ss");
 		Date date = new Date();
 		String currentDate = formatter.format(date);
-		if (PropertyFileHelper.get("OverrideResults").equalsIgnoreCase("yes")) {
+		if (PropertyFileHelper.get(PropertyConfig.OVERRIDERESULTS.toString()).equalsIgnoreCase("yes")) {
 			extentreportpath = FrameworkConstant.editExtentreportPath;
 		} else {
 			extentreportpath = FrameworkConstant.newExtentReportPath(currentDate);
