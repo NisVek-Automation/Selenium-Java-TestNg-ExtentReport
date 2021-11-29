@@ -12,7 +12,6 @@ Don't forget to give this project a ⭐
 
 - [About](#about)
 - [Features](#features)
-- [Limitations](#limitations)
 - [QA Documents](#document)
 - [Technologies](#technologies)
 - [Installation](#installation)
@@ -21,6 +20,7 @@ Don't forget to give this project a ⭐
 - [Project Design](#project-design)
 - [Framework Structure](#framework-structure)
 - [Logs and Reporting](#logs-reporting)
+- [Limitations](#limitations)
 - [Contributing](#contributing)
 - [Authors](#author)
 
@@ -43,13 +43,6 @@ Features Supported by Framework :
 - Extent reporting with detail error and screenshots attached.
 - Supports cross browsers Testing.
 - Custom configuration for framework.
-
----
-
-## ✨ Limitations <a name = "limitations"></a>
-
-- Device testing such as Mobile/Tablet.
-- Parallel testing.
 
 ---
 
@@ -218,6 +211,13 @@ git clone https://github.com/NisVek-Automation/Miro-Selenium-Java.git
 | screenShots/<TestCaseName>/ |  Each testcases screenshots available in respective testcase name folder       |
 
 Note: For understanding purpose, all above files avaialbe in this repository.
+
+---
+  
+## ✨ Limitations <a name = "limitations"></a>
+
+- Device testing such as Mobile/Tablet.
+- Parallel testing.
 
 ---
 
