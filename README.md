@@ -208,7 +208,7 @@ git clone https://github.com/NisVek-Automation/Miro-Selenium-Java.git
 | ---         | ---       |
 | logs/TestLog.log |  Detailed execution log.        |
 | reports/Extent-TestReport.html  |  Execution Extent report in HTML. |
-| screenShots/<TestCaseName> |  Each testcases screenshots available in respective testcase name folder       |
+| screenShots/TestCaseName/ |  Each testcases screenshots available in respective testcase name folder       |
 
 Note: For understanding purpose, all above files avaialbe in this repository.
 
