@@ -97,7 +97,7 @@ How to use this framework?
 1. Clone the repository to your workspace.
 
 ```sh
-git clone https://github.com/NisVek-Automation/Miro-Selenium-Java.git
+git clone https://github.com/NisVek-Automation/Selenium-Java-TestNg-ExtentReport.git
 ```
 
 2. The `DataSheet.xlsx` under the `src/test/resources` folder is used for data driven testing. 
