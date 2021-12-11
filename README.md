@@ -115,7 +115,7 @@ git clone https://github.com/NisVek-Automation/Selenium-Java-TestNg-ExtentReport
 ---
 
 ## 🏗️ Framework Structure <a name = "framework-structure"></a>
-![Framework](https://github.com/NisVek-Automation/Miro-Selenium-Java/blob/main/documents/AutomationFramework.jpg)
+![Framework](https://github.com/NisVek-Automation/Selenium-Java-TestNg-ExtentReport/blob/main/documents/AutomationFramework.jpg)
 
 
  ### 📚 Reusable framework utilitites
