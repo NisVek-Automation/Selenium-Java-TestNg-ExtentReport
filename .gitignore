@@ -7,8 +7,9 @@ logs/*
 screenShots/*
 screenShots/
 report/
-/report/*
+report/*
 /.classpath
 /.settings/*
 /.project
+/.factorypath
 .DS_Store
