@@ -38,7 +38,7 @@ public class ExtentReport {
 		report.loadConfig(new File(FrameworkConstant.extentConfigPath));
 		report.addSystemInfo("Testing", "UI Testing Demo");
 		report.addSystemInfo("Author", "Nisha Vekariya");
-		report.addSystemInfo("User Name","Nisha");
+		report.addSystemInfo("Environment","QA");
 	}
 
 	/**

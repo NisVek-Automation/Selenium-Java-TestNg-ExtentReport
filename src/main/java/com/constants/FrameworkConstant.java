@@ -43,5 +43,6 @@ public final class FrameworkConstant {
 	public static final String newExtentReportPath(String currentDate) {
 		return extentreportPath + "Extent-TestReport-" + currentDate + ".html";
 	}
+	
 
 }

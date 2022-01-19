@@ -1,31 +1,21 @@
 package com.utils;
 
+
+import java.util.Set;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.browser.DriverManager;
 import com.constants.FrameworkConstant;
-import com.reports.LogStatus;
 
 /**
- * Represents the selenium functionalities.
+ * Represents the Selenium functionalities.
  * @author Nisha Vekariya
  * @version 1.0
  */
 public class SeleniumFunctionHelper {
-
-	/** This is a WebDrvier Wait Instance Variable. */
-	private WebDriverWait wait;
-
-	/**
-	 * This Constructor to initializes the SeleniumFunctionHelper.
-	 */
-	public SeleniumFunctionHelper() {
-			this.wait = new WebDriverWait(DriverManager.getDriver(), FrameworkConstant.waitTime);
-	}
 
 	/**
 	 * This method verify the the current URL contains the searched element.
@@ -34,7 +24,8 @@ public class SeleniumFunctionHelper {
 	 */
 	public boolean isUrlContains(final String searchPattern) {
 		boolean flag = false;
-		flag = wait.until(ExpectedConditions.urlContains(searchPattern));
+		flag = new WebDriverWait(DriverManager.getDriver(), FrameworkConstant.waitTime)
+				.until(ExpectedConditions.urlContains(searchPattern));
 		return flag;
 	}
 
@@ -42,17 +33,16 @@ public class SeleniumFunctionHelper {
 	 * This method clicks on the given element if it is visible and clickable.
 	 * @param objectTobeClicked -> WebElement in which click operation needs to do.
 	 */
-	public void clickElement(final WebElement objectTobeClicked) {
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(objectTobeClicked));
-		element.click();
+	public void clickElement(final WebElement locator) {
+		explicitWaitForElementToBeClickable(locator).click();
 	}
 
 	/**
 	 * This method clicks on the given element if it is visible and clickable.
-	 * @param objectTobeClicked -> WebElement in which click operation needs to do.
+	 * @param locator -> WebElement in which click operation needs to do.
 	 */
-	public void clickUsingJavaScript(final WebElement objectTobeClicked) {
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(objectTobeClicked));
+	public void clickUsingJavaScript(final WebElement locator) {
+		WebElement element = explicitWaitForElementToBeClickable(locator);
 		JavascriptExecutor executor = (JavascriptExecutor) DriverManager.getDriver();
 		executor.executeScript("arguments[0].click();", element);
 	}
@@ -63,17 +53,17 @@ public class SeleniumFunctionHelper {
 	 * @param textToEnter -> Value tobe entered.
 	 */
 	public void enterText(final WebElement locator, String textToEnter) {
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		WebElement element = explicitWaitForElementToBeClickable(locator);
 		element.sendKeys(textToEnter);
 
 	}
 
 	/**
 	 * This method provide the text in that given webelement.
-	 * @param element -> WebElement from which get the text.
+	 * @param locator -> WebElement from which get the text.
 	 */
-	public String getText(final WebElement element) {
-		return element.getText();
+	public String getText(final WebElement locator) {
+		return locator.getText();
 	}
 
 	/**
@@ -81,7 +71,7 @@ public class SeleniumFunctionHelper {
 	 * @param locator -> WebElement in which the text need to clear.
 	 */
 	public void clearText(final WebElement locator){
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		WebElement element = explicitWaitForElementToBeClickable(locator);
 		element.clear();
 	}
 	
@@ -100,10 +90,18 @@ public class SeleniumFunctionHelper {
 	 * @return true -> element it is visible return true, else false.
 	 */
 	public boolean isElementVisibility(final WebElement locator) {
-		boolean flag = false;
-		WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
-		flag = isElementNotNull(element);
-		return flag;
+		return (explicitWaitForElementToBeVisible(locator) == null)?false:true;
+	}
+	
+	/**
+	 * Explicit wait for element to be present.
+	 * @param by to locate web elements
+	 * @return WebElement
+	 *
+	 */
+	public static WebElement explicitWaitForElementToBeVisible(final WebElement locator) {
+		return new WebDriverWait(DriverManager.getDriver(), FrameworkConstant.waitTime)
+				.until(ExpectedConditions.visibilityOf(locator));
 	}
 
 	/**
@@ -112,22 +110,59 @@ public class SeleniumFunctionHelper {
 	 * @return flag -> True if clickable element, else false
 	 */
 	public boolean isElementClickable(final WebElement locator) {
-		boolean flag = false;
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-		flag = isElementNotNull(element);
-		return flag;
+			return (explicitWaitForElementToBeClickable(locator) == null)?false:true;
 	}
 
 	/**
-	 * This method verify the element is null or not.
-	 * @param locator -> WebElement  Object
-	 * @return flag -> True if not null, else false
+	 * Explicit wait for element to be clickable.
+	 * @param by to locate web elements
+	 * @return WebElement
+	 *
 	 */
-	private boolean isElementNotNull(final WebElement element) {
-		if (element != null) {
-			return true;
-		} else {
-			return false;
-		}
+	public static WebElement explicitWaitForElementToBeClickable(final WebElement locator) {
+		return new WebDriverWait(DriverManager.getDriver(), FrameworkConstant.waitTime)
+				.until(ExpectedConditions.elementToBeClickable(locator));
 	}
+	
+	
+	public static String getTitle() {
+		return DriverManager.getDriver().getTitle();
+	}
+
+	public static String getPageSource() {
+		return DriverManager.getDriver().getPageSource();
+	}
+
+	public static String getCurrentUrl() {
+		return DriverManager.getDriver().getCurrentUrl();
+	}
+
+	public static String getWindowHandle() {
+		return DriverManager.getDriver().getWindowHandle();
+	}
+	
+	public static void switchToWindow(String windowName) {
+		DriverManager.getDriver().switchTo().window(windowName);
+	}
+
+	public static Set<String> getAllWindowHandle() {
+		return DriverManager.getDriver().getWindowHandles();
+	}
+	
+	public static void dismissAert() {
+		DriverManager.getDriver().switchTo().alert().dismiss();
+	}
+
+	public static void acceptAert() {
+		DriverManager.getDriver().switchTo().alert().accept();
+	}
+
+	public static void sendValueToAlert(String value) {
+		DriverManager.getDriver().switchTo().alert().sendKeys(value);
+	}
+	
+	public static String getAertText() {
+		return DriverManager.getDriver().switchTo().alert().getText();
+	}
+	
 }
