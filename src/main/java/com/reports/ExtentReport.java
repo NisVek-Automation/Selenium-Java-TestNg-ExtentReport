@@ -22,9 +22,9 @@ public class ExtentReport {
 	public static ExtentReports report = null;
 	public static String reportFilePath = "";
 
-	// To avoid external initialization
 	/**
 	 * Basic configuration in extent report.
+	 * Private access to avoid external initialization.
 	 */
 	private ExtentReport() {
 		report = new ExtentReports(getReportPath());
@@ -34,14 +34,16 @@ public class ExtentReport {
 		report.addSystemInfo("Environment",FrameworkConstant.environment);
 	}
 
-	/**
-	 * Initialize the extent report.
-	 */
+	/** Initialize the extent report. */
 	public static void initialize() {
 		ExtentReport report = new ExtentReport();
 		LogStatus.pass("Extent Report is initialized.");
 	}
 	
+	/**
+	 * Get the report location.
+	 * @return Path of the report.
+	 */
 	public static String getReportPath() {
 		if (reportFilePath.isEmpty()) {
 			if (PropertyFileHelper.get(PropertyConfig.OVERRIDETESTREPORT).equalsIgnoreCase(FrameworkConstant.yes)) {

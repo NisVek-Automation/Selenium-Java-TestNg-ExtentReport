@@ -23,6 +23,12 @@ import com.utils.PropertyFileHelper;
  * @version 1.0
  */
 public class BaseTest {
+	
+	/** Initialization process for report. */
+	@BeforeSuite
+	public void beforeSuite() {
+		ExtentReport.initialize();
+	}
 
 	/**
 	 * Set up process such us browser initialization and open.
@@ -34,22 +40,12 @@ public class BaseTest {
 			Driver.initialize(browserName);
 	}
 
-	/**
-	 * Wrapup process such as closing and quieting the browser.
-	 */
+	/** Wrapup process such as closing and quieting the browser. */
 	@AfterMethod
 	public void wrapUp() {
 		Driver.quit();
 	}
 	
-	/**
-	 * Initialization process for report.
-	 */
-	@BeforeSuite
-	public void beforeSuite() {
-		ExtentReport.initialize();
-	}
-
 	/**
 	 * The afterSuite method clear the extent report.
 	 */

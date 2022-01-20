@@ -36,6 +36,11 @@ public class PropertyFileHelper {
 
 	}
 	
+	/**
+	 * Get the property value based on property name
+	 * @param Name of property
+	 * @return Value of property
+	 */
 	public static String get(PropertyConfig key) {
 		if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toUpperCase()))) {
 			try {

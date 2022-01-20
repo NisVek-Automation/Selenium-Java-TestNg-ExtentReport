@@ -24,14 +24,11 @@ public class ChromeBrowser extends BrowserManager{
 	
 	/**
 	 * This method helps to setup the Chrome driver for Testing.
-	 * @author Nisha Vekariya
 	 * @return driver -> It returns the Chrome type WebDriver.
 	 */
 	@Override
 	public WebDriver createDriver(){
-		//Setup the WebDriverManager 
 		WebDriverManager.chromedriver().setup();
-		//Set the project specific settings for Chrome
 		browserSetting();
 		driver = new ChromeDriver(options);
 		return driver;

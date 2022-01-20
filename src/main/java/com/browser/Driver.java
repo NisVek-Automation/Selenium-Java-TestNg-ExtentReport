@@ -2,6 +2,7 @@ package com.browser;
 
 import org.openqa.selenium.WebDriver;
 
+import com.enums.BrowserName;
 import com.enums.PropertyConfig;
 import com.reports.LogStatus;
 import com.utils.PropertyFileHelper;
@@ -12,6 +13,17 @@ import com.utils.PropertyFileHelper;
  * @version 1.0
 */
 public class Driver {
+	
+	/**
+	 * Initialize the driver based on selected browser and open the url operation.
+	 * @param browserName -> browser name using that can create the driver.
+	 */
+	public static void initialize(String browserName) {
+		if (DriverManager.getDriver() == null){
+				new Driver(browserName);
+		}
+		LogStatus.pass("Driver is initialized Successfully.");
+	}
 	
 	/**
 	 * Initialize the driver and open the url operation.
@@ -31,24 +43,13 @@ public class Driver {
 	 */
 	private void selectDriverType(String browser) {
 		WebDriver driver=null;
-			if (browser.equalsIgnoreCase("edge")) {
+			if (browser.equalsIgnoreCase(BrowserName.edge.toString())) {
 				driver = new EdgeBrowser().createDriver();
 			} else {
 				driver = new ChromeBrowser().createDriver();
 			}
 			DriverManager.setWebDriver(driver);
 			LogStatus.pass("Driver is initialized with browser : " + browser);
-	}
-
-	/**
-	 * Initialize the driver based on selected browser and open the url operation.
-	 * @param browserName -> browser name using that can create the driver.
-	 */
-	public static void initialize(String browserName) {
-		if (DriverManager.getDriver() == null){
-				new Driver(browserName);
-		}
-		LogStatus.pass("Driver is initialized Successfully.");
 	}
 
 	/**

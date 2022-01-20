@@ -18,35 +18,13 @@ import com.constants.FrameworkConstant;
 public class SeleniumFunctionHelper {
 
 	/**
-	 * This method verify the the current URL contains the searched element.
-	 * @param searchPattern -> pattern which needs to search in URL.
-	 * @return flag -> Returns true if pattern exist in current URL, else false.
-	 */
-	public boolean isUrlContains(final String searchPattern) {
-		boolean flag = false;
-		flag = new WebDriverWait(DriverManager.getDriver(), FrameworkConstant.waitTime)
-				.until(ExpectedConditions.urlContains(searchPattern));
-		return flag;
-	}
-
-	/**
 	 * This method clicks on the given element if it is visible and clickable.
 	 * @param objectTobeClicked -> WebElement in which click operation needs to do.
 	 */
 	public void clickElement(final WebElement locator) {
 		explicitWaitForElementToBeClickable(locator).click();
 	}
-
-	/**
-	 * This method clicks on the given element if it is visible and clickable.
-	 * @param locator -> WebElement in which click operation needs to do.
-	 */
-	public void clickUsingJavaScript(final WebElement locator) {
-		WebElement element = explicitWaitForElementToBeClickable(locator);
-		JavascriptExecutor executor = (JavascriptExecutor) DriverManager.getDriver();
-		executor.executeScript("arguments[0].click();", element);
-	}
-
+	
 	/**
 	 * This method enter value on the given element if it is visible and clickable.
 	 * @param locator -> WebElement in which value needs to enter.
@@ -59,13 +37,15 @@ public class SeleniumFunctionHelper {
 	}
 
 	/**
-	 * This method provide the text in that given webelement.
-	 * @param locator -> WebElement from which get the text.
+	 * This method clicks on the given element if it is visible and clickable.
+	 * @param locator -> WebElement in which click operation needs to do.
 	 */
-	public String getText(final WebElement locator) {
-		return locator.getText();
+	public void clickUsingJavaScript(final WebElement locator) {
+		JavascriptExecutor executor = (JavascriptExecutor) DriverManager.getDriver();
+		executor.executeScript("arguments[0].click();", 
+				explicitWaitForElementToBeClickable(locator));
 	}
-
+	
 	/**
 	 * This method clear the value in the textBox/textarea element.
 	 * @param locator -> WebElement in which the text need to clear.
@@ -73,6 +53,33 @@ public class SeleniumFunctionHelper {
 	public void clearText(final WebElement locator){
 		WebElement element = explicitWaitForElementToBeClickable(locator);
 		element.clear();
+	}
+	
+	/**
+	 * This method waits until the element is clickable on the DOM of the page.
+	 * @param locator -> WebElement  Object
+	 * @return flag -> True if clickable element, else false
+	 */
+	public boolean isElementClickable(final WebElement locator) {
+			return (explicitWaitForElementToBeClickable(locator) == null)?false:true;
+	}
+	
+	/**
+	 * Explicit wait for element to be clickable.
+	 * @param by to locate web elements
+	 * @return WebElement
+	 */
+	public static WebElement explicitWaitForElementToBeClickable(final WebElement locator) {
+		return new WebDriverWait(DriverManager.getDriver(), FrameworkConstant.waitTime)
+				.until(ExpectedConditions.elementToBeClickable(locator));
+	}
+	
+	/**
+	 * This method provide the text in that given webelement.
+	 * @param locator -> WebElement from which get the text.
+	 */
+	public String getText(final WebElement locator) {
+		return locator.getText();
 	}
 	
 	/**
@@ -97,33 +104,21 @@ public class SeleniumFunctionHelper {
 	 * Explicit wait for element to be present.
 	 * @param by to locate web elements
 	 * @return WebElement
-	 *
 	 */
 	public static WebElement explicitWaitForElementToBeVisible(final WebElement locator) {
 		return new WebDriverWait(DriverManager.getDriver(), FrameworkConstant.waitTime)
 				.until(ExpectedConditions.visibilityOf(locator));
 	}
-
-	/**
-	 * This method waits until the element is clickable on the DOM of the page.
-	 * @param locator -> WebElement  Object
-	 * @return flag -> True if clickable element, else false
-	 */
-	public boolean isElementClickable(final WebElement locator) {
-			return (explicitWaitForElementToBeClickable(locator) == null)?false:true;
-	}
-
-	/**
-	 * Explicit wait for element to be clickable.
-	 * @param by to locate web elements
-	 * @return WebElement
-	 *
-	 */
-	public static WebElement explicitWaitForElementToBeClickable(final WebElement locator) {
-		return new WebDriverWait(DriverManager.getDriver(), FrameworkConstant.waitTime)
-				.until(ExpectedConditions.elementToBeClickable(locator));
-	}
 	
+	/**
+	 * This method verify the the current URL contains the searched element.
+	 * @param Pattern which needs to search in URL.
+	 * @return Returns true if pattern exist in current URL, else false.
+	 */
+	public boolean isUrlContains(final String searchPattern) {
+		return new WebDriverWait(DriverManager.getDriver(), FrameworkConstant.waitTime)
+				.until(ExpectedConditions.urlContains(searchPattern));
+	}
 	
 	public static String getTitle() {
 		return DriverManager.getDriver().getTitle();

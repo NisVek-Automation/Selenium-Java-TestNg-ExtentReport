@@ -21,10 +21,8 @@ public class EdgeBrowser extends BrowserManager{
 	 */
 	@Override
 	public WebDriver createDriver(){
-		//Setup the WebDriverManager 
 		WebDriverManager.edgedriver().setup();
 		driver = new EdgeDriver();
 		return driver;
 	}
-
 }
