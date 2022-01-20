@@ -21,7 +21,7 @@ public class Driver {
 		selectDriverType(browserName);
 		DriverManager.getDriver().manage().deleteAllCookies();
 		DriverManager.getDriver().manage().window().maximize();
-		DriverManager.getDriver().get(PropertyFileHelper.get(PropertyConfig.URL.toString()));
+		DriverManager.getDriver().get(PropertyFileHelper.get(PropertyConfig.URL));
 		LogStatus.pass("Browser is opened and maximize successfully.");
 	}
 

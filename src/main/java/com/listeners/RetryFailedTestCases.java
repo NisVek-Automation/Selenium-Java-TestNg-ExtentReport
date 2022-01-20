@@ -18,7 +18,7 @@ public class RetryFailedTestCases implements IRetryAnalyzer {
 	/** Variable to keep counter of retry */
 	private int retryCount = 0;
 	/** Variable to define max retry count */
-	private int maxRetryCount = Integer.parseInt(PropertyFileHelper.get(PropertyConfig.NUMBEROFENTRIES.toString()));
+	private int maxRetryCount = Integer.parseInt(PropertyFileHelper.get(PropertyConfig.NUMBEROFENTRIES));
 	
 	/**
 	 * This method decides how many times a test needs to be rerun. TestNg will

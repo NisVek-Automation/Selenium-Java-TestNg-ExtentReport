@@ -8,6 +8,7 @@ import java.util.Date;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.constants.FrameworkConstant;
 import com.enums.PropertyConfig;
+import com.utils.CommonFunctionHelper;
 import com.utils.PropertyFileHelper;
 
 /**
@@ -19,26 +20,18 @@ import com.utils.PropertyFileHelper;
 public class ExtentReport {
 
 	public static ExtentReports report = null;
-	public static String extentreportpath = "";
+	public static String reportFilePath = "";
 
 	// To avoid external initialization
 	/**
 	 * Basic configuration in extent report.
 	 */
 	private ExtentReport() {
-		SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy_ hh_mm_ss");
-		Date date = new Date();
-		String currentDate = formatter.format(date);
-		if (PropertyFileHelper.get(PropertyConfig.OVERRIDERESULTS.toString()).equalsIgnoreCase("yes")) {
-			extentreportpath = FrameworkConstant.editExtentreportPath;
-		} else {
-			extentreportpath = FrameworkConstant.newExtentReportPath(currentDate);
-		}
-		report = new ExtentReports(extentreportpath);
+		report = new ExtentReports(getReportPath());
 		report.loadConfig(new File(FrameworkConstant.extentConfigPath));
-		report.addSystemInfo("Testing", "UI Testing Demo");
-		report.addSystemInfo("Author", "Nisha Vekariya");
-		report.addSystemInfo("Environment","QA");
+		report.addSystemInfo("Testing", FrameworkConstant.reportTitle);
+		report.addSystemInfo("Author", FrameworkConstant.author);
+		report.addSystemInfo("Environment",FrameworkConstant.environment);
 	}
 
 	/**
@@ -47,6 +40,17 @@ public class ExtentReport {
 	public static void initialize() {
 		ExtentReport report = new ExtentReport();
 		LogStatus.pass("Extent Report is initialized.");
+	}
+	
+	public static String getReportPath() {
+		if (reportFilePath.isEmpty()) {
+			if (PropertyFileHelper.get(PropertyConfig.OVERRIDETESTREPORT).equalsIgnoreCase(FrameworkConstant.yes)) {
+				reportFilePath = FrameworkConstant.editExtentreportPath;
+			} else {
+				reportFilePath = FrameworkConstant.newExtentReportPath(CommonFunctionHelper.getCurrentDateTime());
+			}
+		}
+		return reportFilePath;
 	}
 
 }

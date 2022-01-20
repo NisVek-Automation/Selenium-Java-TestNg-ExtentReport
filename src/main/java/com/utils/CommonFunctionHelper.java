@@ -7,12 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Calendar;
-import java.util.Properties;
-import java.util.Random;
-
 import java.util.*;
 import javax.activation.*;
 
@@ -29,6 +23,7 @@ import com.browser.DriverManager;
 import com.constants.FrameworkConstant;
 import com.enums.PropertyConfig;
 import com.listeners.ListenerClass;
+import com.reports.ExtentManager;
 //import com.listener.ListenerClass;
 import com.reports.ExtentReport;
 import com.reports.LogStatus;
@@ -48,32 +43,19 @@ public final class CommonFunctionHelper {
 		//Avoid creating the object of this class.
 	}
 	
-	/** Takes screenshot  */
-	public static void takeScreenshot() {
-		takeScreenshotAndGetTargetPath();
-	}
-	
 	/**
 	 * Captures screenshot and returns the screenshot path.
 	 * @return destination -> return the screenshot path.
 	 */
 	public static String takeScreenshotAndPullPath() {
-		return takeScreenshotAndGetTargetPath();
-	}
-	
-	/**
-	 * Captures screenshot and returns the screenshot path.
-	 * @return destination -> return the screenshot path.
-	 */
-	private static String takeScreenshotAndGetTargetPath() {
 		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
 		String targetPath = null;
 		try {
-			if (PropertyFileHelper.get(PropertyConfig.SCREENSHOTPATH.toString()).equals("")) {
+			if (PropertyFileHelper.get(PropertyConfig.SCREENSHOTPATH).equals("")) {
 				targetPath = FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName());
 			} else {
 				targetPath = FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName(), 
-								PropertyFileHelper.get(PropertyConfig.SCREENSHOTPATH.toString()));
+						PropertyFileHelper.get(PropertyConfig.SCREENSHOTPATH));
 			}
 			FileUtils.copyFile(scrFile,new File(targetPath));
 		} catch (IOException e) {
@@ -89,12 +71,12 @@ public final class CommonFunctionHelper {
 	 * @param screenshotpath --> path of screenshot.
 	 * @return base64 -> return the encoded image string.
 	 */
-	public static String getBase64Image(String screenshotpath) {
+	public static String getBase64Image() {
 		String base64 = null;
 		try {
-			InputStream is = new FileInputStream(screenshotpath);
-			byte[] imageBytes = IOUtils.toByteArray(is);
-			base64 = Base64.getEncoder().encodeToString(imageBytes);
+			byte[] imageBytes = IOUtils.toByteArray(new FileInputStream(takeScreenshotAndPullPath()));
+			base64 = ExtentManager.getExtTest().addBase64ScreenShot("data:image/png;base64,"+ 
+					Base64.getEncoder().encodeToString(imageBytes));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,29 +85,19 @@ public final class CommonFunctionHelper {
 
 	/**
 	 * This method gives the current date and time on specific format.
-	 * @return time -> It returns time in specific format.
+	 * @return It returns time in specific format.
 	 */
-	public static String getCurrentDateTimeFormate() {
-		DateFormat dateFormat = new SimpleDateFormat("_yyyy-MM-dd_HH-mm-ss");
-		Calendar calendar = Calendar.getInstance();
-		String time = "" + dateFormat.format(calendar.getTime());
-		return time;
+	public static String getCurrentDateTime() {
+		SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy_hh_mm_ss");
+		return formatter.format(new Date());
 	}
-
-	/**
-	 * This method gives the current date and time.
-	 * @return It returns current date time.
-	 */
-	public static String getCurrentDate() {
-		return getCurrentDateTimeFormate().substring(0, 11);
-	}
-
+	
 	/**
 	 * This method open the report automatically.
 	 */
 	public static void openReport() {
-		if (PropertyFileHelper.get(PropertyConfig.OPENTESTRESULT.toString()).equalsIgnoreCase("yes")) {
-			File htmlFile = new File(ExtentReport.extentreportpath);
+		if (PropertyFileHelper.get(PropertyConfig.OPENTESTRESULT).equalsIgnoreCase(FrameworkConstant.yes)) {
+			File htmlFile = new File(ExtentReport.getReportPath());
 			try {
 				Desktop.getDesktop().browse(htmlFile.toURI());
 			} catch (IOException e) {

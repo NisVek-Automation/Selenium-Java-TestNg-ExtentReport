@@ -26,13 +26,10 @@ import org.testng.ITestNGMethod;
 public class ListenerClass implements ITestListener {
 
 	private static String TestcaseName;
-	private static WebDriver driver;
-
 	
 	// This will execute before the main test start (@Test)
 	public void onTestStart(ITestResult result) {
 		TestcaseName = result.getMethod().getDescription();
-		setDriver(result);
 		ExtentManager.setExtentTest(ExtentReport.report.startTest(TestcaseName));
 		LogStatus.pass("********** " + TestcaseName + " is started successfully. **********", true);
 
@@ -48,10 +45,9 @@ public class ListenerClass implements ITestListener {
 	// This will execute only on the event of fail test
 	public void onTestFailure(ITestResult result) {
 		LogStatus.fail(result.getMethod().getDescription() + " is failed.", false);
-		LogStatus.fail(result.getThrowable().toString());
-		LogStatus.fail("Failed", true);
+		LogStatus.fail(result.getThrowable().getMessage());
 		ExtentReport.report.endTest(ExtentManager.getExtTest());
-		LogStatus.pass("********** " + TestcaseName + " is not successful. **********", false);
+		LogStatus.fail("********** " + TestcaseName + " is not successful. **********", false);
 
 	}
 
@@ -80,12 +76,4 @@ public class ListenerClass implements ITestListener {
 		return TestcaseName;
 	}
 
-	public static WebDriver getDriver() {
-		return driver;
-	}
-
-	public static void setDriver(ITestResult result) {
-		ITestContext context = result.getTestContext();
-		driver = (WebDriver) context.getAttribute("WebDriver");
-	}
 }

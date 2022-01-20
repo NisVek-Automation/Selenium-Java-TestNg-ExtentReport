@@ -42,31 +42,12 @@ public class LogStatus {
 		ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.PASS, message);
 		if(isScreenShotRequired) {
 			ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.PASS, message,
-					ExtentManager.getExtTest().addBase64ScreenShot("data:image/png;base64,"+CommonFunctionHelper.getBase64Image(CommonFunctionHelper.takeScreenshotAndPullPath())));
+					CommonFunctionHelper.getBase64Image());
 		}
 		log.info(message);
 		Reporter.log(message);
-		
 	}
 	
-	/**
-	 * Report status as fail with message in log file and reporter only.
-	 * @param message --> Message which wanted to fail.
-	 */
-	public static void fail(String message){
-		log.error(message);
-		Reporter.log(message);
-	}
-
-	/**
-	 * Report status as fail with exception in log file and reporter only.
-	 * @param exception --> Exception which wanted to fail.
-	 */
-	public static void fail(Exception exception){
-		log.error(exception);
-		Reporter.log(exception.getMessage());
-	}
-
 	/**
 	 * Report status as fail with message and screenshot in extent report,
 	 * log file and reporter.
@@ -76,14 +57,30 @@ public class LogStatus {
 	public static void fail(String message, boolean isScreenShotRequired){
 		ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.FAIL, message);
 		if(isScreenShotRequired) {
-			ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.FAIL, message,
-					ExtentManager.getExtTest().addBase64ScreenShot("data:image/png;base64,"+CommonFunctionHelper.getBase64Image(CommonFunctionHelper.takeScreenshotAndPullPath())));
+			ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.FAIL, 
+					message,CommonFunctionHelper.getBase64Image());
 		}
 		log.error(message);
 		Reporter.log(message);
 	}
 	
+	private void base64Screenshot() {
+		
+		//ExtentManager.getExtTest().addBase64ScreenShot("data:image/png;base64,"+CommonFunctionHelper.getBase64Image(CommonFunctionHelper.takeScreenshotAndPullPath()))
+	}
+	
 	/**
+	 * Report status as fail with message in log file and reporter only.
+	 * @param message --> Message which wanted to fail.
+	 */
+	public static void fail(String message){
+		ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.FAIL, message);
+		log.fatal(message);
+		//log.error(message);
+		Reporter.log(message);
+	}
+
+		/**
 	 * Report status as info with message in extent report,log file and reporter.
 	 * @param message --> Message which wanted to mark as info.
 	 */

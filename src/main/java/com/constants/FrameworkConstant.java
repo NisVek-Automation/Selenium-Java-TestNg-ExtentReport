@@ -43,6 +43,9 @@ public final class FrameworkConstant {
 	public static final String newExtentReportPath(String currentDate) {
 		return extentreportPath + "Extent-TestReport-" + currentDate + ".html";
 	}
+	public static final String reportTitle = "Test Report";
+	public static final String author = "Nisha Vekariya";
+	public static final String environment = "QA";
 	
-
+	public static final String yes = "yes";
 }
