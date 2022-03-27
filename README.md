@@ -29,7 +29,7 @@ Don't forget to give this project a ⭐
 ## 🕹 About <a name = "about"></a>
 
 <p align="left"> 
-This is an UI test Automation framework to start the automation testing using open source tools.
+This is an UI/Web Application test Automation framework to start the automation testing using open source tools.
 </p>
 
 ---
