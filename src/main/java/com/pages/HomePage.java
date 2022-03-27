@@ -13,10 +13,12 @@ import com.reports.LogStatus;
 public class HomePage extends BasePage {
 
 
+	//------------------------ WebElements -------------------------------//
 	@FindBy(xpath = "//*[@id='sign-up-free-btn']") private WebElement btnSignUp;
 	@FindBy(xpath = "//*[@class='com-el-button__text' and text()='Start a whiteboard']")
 	private WebElement btnStartWhiteBoard;
 
+	//------------------------ WebElements -------------------------------//
 	/** Click operation on Sign up button. */
 	public void clickSignUp() {
 		seleniumHelper.highlightElement(btnSignUp);

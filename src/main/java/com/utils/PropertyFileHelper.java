@@ -44,7 +44,7 @@ public class PropertyFileHelper {
 	public static String get(PropertyConfig key) {
 		if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toUpperCase()))) {
 			try {
-				throw new Exception("Property name '" + key.toString().toLowerCase() + "' not found. Please check FrameworkConfig.properties");
+				throw new Exception("Property name '" + key.toString().toUpperCase() + "' not found. Please check FrameworkConfig.properties");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

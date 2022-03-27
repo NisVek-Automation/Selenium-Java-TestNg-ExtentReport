@@ -29,10 +29,9 @@ public class ListenerClass implements ITestListener {
 	
 	// This will execute before the main test start (@Test)
 	public void onTestStart(ITestResult result) {
-		TestcaseName = result.getMethod().getDescription();
+		TestcaseName = result.getName();
 		ExtentManager.setExtentTest(ExtentReport.report.startTest(TestcaseName));
 		LogStatus.pass("********** " + TestcaseName + " is started successfully. **********", true);
-
 	}
 
 	// This will execute only when the test is pass
@@ -47,7 +46,7 @@ public class ListenerClass implements ITestListener {
 		LogStatus.fail(result.getMethod().getDescription() + " is failed.", false);
 		LogStatus.fail(result.getThrowable().getMessage());
 		ExtentReport.report.endTest(ExtentManager.getExtTest());
-		LogStatus.fail("********** " + TestcaseName + " is not successful. **********", false);
+		LogStatus.fail("********** " + TestcaseName + " is not successful. **********", true);
 
 	}
 

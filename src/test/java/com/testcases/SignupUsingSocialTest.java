@@ -13,7 +13,7 @@ public class SignupUsingSocialTest extends BaseTest{
 	SignupPage signupPage =null;
 	
 
-	@Test(description = "TC01_SignupUsingExternal_Google")
+	@Test()
 	public void TC01_SignupUsingExternal_Google() {
 
 		homePage = new HomePage();

@@ -1,11 +1,11 @@
 package com.reports;
 
+import java.lang.invoke.MethodHandles;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Reporter;
-
 import com.utils.CommonFunctionHelper;
-import com.utils.PropertyFileHelper;
 
 /**
  * Provides type of log such as pass, fail, error, etc. in the
@@ -17,7 +17,7 @@ import com.utils.PropertyFileHelper;
 public class LogStatus {
 
 	//Initialize Log4j instance
-    private static final Logger log =  LogManager.getLogger(LogStatus.class);
+    private static final Logger log =  LogManager.getLogger(MethodHandles.lookup().lookupClass());
     
 	private LogStatus() {
 		//private to avoid initialization
@@ -64,11 +64,6 @@ public class LogStatus {
 		Reporter.log(message);
 	}
 	
-	private void base64Screenshot() {
-		
-		//ExtentManager.getExtTest().addBase64ScreenShot("data:image/png;base64,"+CommonFunctionHelper.getBase64Image(CommonFunctionHelper.takeScreenshotAndPullPath()))
-	}
-	
 	/**
 	 * Report status as fail with message in log file and reporter only.
 	 * @param message --> Message which wanted to fail.
@@ -80,8 +75,8 @@ public class LogStatus {
 		Reporter.log(message);
 	}
 
-		/**
-	 * Report status as info with message in extent report,log file and reporter.
+	/**
+	 * Report status as info message in extent report,log file and reporter.
 	 * @param message --> Message which wanted to mark as info.
 	 */
 	public static void info(String message){

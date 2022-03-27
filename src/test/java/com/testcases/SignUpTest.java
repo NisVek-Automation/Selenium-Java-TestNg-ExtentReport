@@ -18,7 +18,7 @@ public final class SignUpTest extends BaseTest {
 	LoginPage loginPage=null;
 	
 	/**Test the signup process using 'Sign up free' button from home page menu bar.*/
-	@Test(dataProvider = "signupDataProvider", description = "TC001_SignUpFreeFromMenu")
+	@Test(dataProvider = "signupDataProvider")
 	public void TC001_SignUpFreeFromMenu(String testCaseId, String name,
 			String workEmail, String password, String status) {
 	
@@ -28,7 +28,7 @@ public final class SignUpTest extends BaseTest {
 	}
 	
 	/**Test the singup process using 'Sign up free' button from home page at bottom.*/
-	//@Test(dataProvider = "signupDataProvider", description = "TC002_SignUpFreeBottom")
+	//@Test(dataProvider = "signupDataProvider")
 	public void TC002_SignUpFreeBottom(String testCaseId, String name,
 			String workEmail, String password, String status) {
 
