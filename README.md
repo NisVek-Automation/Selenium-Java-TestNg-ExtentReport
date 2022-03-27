@@ -1,4 +1,4 @@
-# Selenium Automation Framework - UI Testing
+# UI/Web Application Testing - Selenium Automation Framework
 ![Selenium Datadriven Framework](https://github.com/NisVek-Automation/NisVek-Automation/blob/main/readmeResources/JavaSeleniumDataDriven.gif)
 Don't forget to give this project a ⭐
 <div align="center">
