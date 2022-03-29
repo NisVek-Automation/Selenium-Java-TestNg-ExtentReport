@@ -185,8 +185,7 @@ How to use this framework?
   
 ## ✨ Limitations <a name = "limitations"></a>
 
-- Device testing such as Mobile/Tablet.
-- Parallel testing.
+- This framework supports only Web application/UI testing only. Not supporting for Mobile/Tablet testing.
 
 ---
 
