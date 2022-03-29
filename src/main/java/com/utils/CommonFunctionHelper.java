@@ -4,29 +4,21 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import javax.activation.*;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.poi.util.IOUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.Reporter;
 
 import com.browser.DriverManager;
 import com.constants.FrameworkConstant;
-import com.enums.PropertyConfig;
+import com.enums.PropertyEnum;
 import com.listeners.ListenerClass;
-import com.reports.ExtentManager;
-//import com.listener.ListenerClass;
-import com.reports.ExtentReport;
-import com.reports.LogStatus;
+import com.reporting.ExtentManager;
+import com.reporting.ExtentReport;
 
 /**
  * Represents common functionality which used for framework, such as 
@@ -51,11 +43,11 @@ public final class CommonFunctionHelper {
 		File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
 		String targetPath = null;
 		try {
-			if (PropertyFileHelper.get(PropertyConfig.SCREENSHOTPATH).equals("")) {
+			if (PropertyFileHelper.get(PropertyEnum.SCREENSHOTPATH).equals("")) {
 				targetPath = FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName());
 			} else {
 				targetPath = FrameworkConstant.testCaseScreenShotPath(ListenerClass.getTestcaseName(), 
-						PropertyFileHelper.get(PropertyConfig.SCREENSHOTPATH));
+						PropertyFileHelper.get(PropertyEnum.SCREENSHOTPATH));
 			}
 			FileUtils.copyFile(scrFile,new File(targetPath));
 		} catch (IOException e) {
@@ -96,7 +88,7 @@ public final class CommonFunctionHelper {
 	 * This method open the report automatically.
 	 */
 	public static void openReport() {
-		if (PropertyFileHelper.get(PropertyConfig.OPENTESTRESULT).equalsIgnoreCase(FrameworkConstant.yes)) {
+		if (PropertyFileHelper.get(PropertyEnum.OPENTESTRESULT).equalsIgnoreCase(FrameworkConstant.YES)) {
 			File htmlFile = new File(ExtentReport.getReportPath());
 			try {
 				Desktop.getDesktop().browse(htmlFile.toURI());

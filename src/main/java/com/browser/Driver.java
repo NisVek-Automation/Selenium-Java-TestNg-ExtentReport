@@ -3,8 +3,8 @@ package com.browser;
 import org.openqa.selenium.WebDriver;
 
 import com.enums.BrowserName;
-import com.enums.PropertyConfig;
-import com.reports.LogStatus;
+import com.enums.PropertyEnum;
+import com.reporting.Log;
 import com.utils.PropertyFileHelper;
 
 /** 
@@ -22,7 +22,7 @@ public class Driver {
 		if (DriverManager.getDriver() == null){
 				new Driver(browserName);
 		}
-		LogStatus.pass("Driver is initialized Successfully.");
+		Log.pass("Driver is initialized Successfully.");
 	}
 	
 	/**
@@ -33,8 +33,8 @@ public class Driver {
 		selectDriverType(browserName);
 		DriverManager.getDriver().manage().deleteAllCookies();
 		DriverManager.getDriver().manage().window().maximize();
-		DriverManager.getDriver().get(PropertyFileHelper.get(PropertyConfig.URL));
-		LogStatus.pass("Browser is opened and maximize successfully.");
+		DriverManager.getDriver().get(PropertyFileHelper.get(PropertyEnum.URL));
+		Log.pass("Browser is opened and maximize successfully.");
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class Driver {
 				driver = new ChromeBrowser().createDriver();
 			}
 			DriverManager.setWebDriver(driver);
-			LogStatus.pass("Driver is initialized with browser : " + browser);
+			Log.pass("Driver is initialized with browser : " + browser);
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class Driver {
 			DriverManager.getDriver().quit();
 			DriverManager.unload();
 		}
-		LogStatus.pass("Browser is closed successfully.");
+		Log.pass("Browser is closed successfully.");
 	}
 
 }

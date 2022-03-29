@@ -4,10 +4,11 @@ test-output/
 test-output/*
 logs/
 logs/*
-screenShots/*
-screenShots/
+/screenShots/*
+/screenShots
 report/
 report/*
+/.idea
 /.classpath
 /.settings/*
 /.project

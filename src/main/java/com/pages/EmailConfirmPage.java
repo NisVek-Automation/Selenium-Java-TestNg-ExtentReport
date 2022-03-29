@@ -2,7 +2,8 @@ package com.pages;
 
 
 import com.constants.AppConstant;
-import com.reports.LogStatus;
+import com.reporting.Log;
+import com.utils.SeleniumHelper;
 
 /**
  * This class contains Email confirm page related WebElements and functionality.
@@ -16,13 +17,13 @@ public class EmailConfirmPage extends BasePage{
 	 * @return Return true if email confirm page displayed, else false.
 	 */
 	public boolean isEmailConfirmPage(){
-		if(seleniumHelper.isElementVisibility(lblPageHeader) &&
+		if(SeleniumHelper.isElementClickable(lblPageHeader) &&
 				lblPageHeader.getText().equals(AppConstant.emailConfirmPageHeading) &&
-			 seleniumHelper.isUrlContains("email-confirm")){
-			LogStatus.pass("Email Confirmation page is displayed successfully.", false);
+			 SeleniumHelper.isUrlContains("email-confirm")){
+			Log.pass("Email Confirmation page is displayed successfully.", false);
 			return true;
 		}
-		LogStatus.pass("Email Confirmation page is not displayed.", true);
+		Log.pass("Email Confirmation page is not displayed.", true);
 		return false;
 	}
 	

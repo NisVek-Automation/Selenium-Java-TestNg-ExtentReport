@@ -10,8 +10,8 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.browser.Driver;
-import com.reports.ExtentReport;
-import com.reports.LogStatus;
+import com.reporting.ExtentReport;
+import com.reporting.Log;
 import com.utils.CommonFunctionHelper;
 import com.utils.ExcelSheetHelper;
 import com.utils.PropertyFileHelper;
@@ -23,12 +23,6 @@ import com.utils.PropertyFileHelper;
  * @version 1.0
  */
 public class BaseTest {
-	
-	/** Initialization process for report. */
-	@BeforeSuite
-	public void beforeSuite() {
-		ExtentReport.initialize();
-	}
 
 	/**
 	 * Set up process such us browser initialization and open.
@@ -44,15 +38,6 @@ public class BaseTest {
 	@AfterMethod
 	public void wrapUp() {
 		Driver.quit();
-	}
-	
-	/**
-	 * The afterSuite method clear the extent report.
-	 */
-	@AfterSuite
-	public void afterSuite() {
-		ExtentReport.report.flush();
-		CommonFunctionHelper.openReport();
 	}
 	
 	/**

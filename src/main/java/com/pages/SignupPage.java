@@ -3,7 +3,8 @@ package com.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.constants.AppConstant;
-import com.reports.LogStatus;
+import com.reporting.Log;
+import com.utils.SeleniumHelper;
 
 /**
  * This class contains signup page related WebElements and functionality.
@@ -13,6 +14,7 @@ import com.reports.LogStatus;
  */
 public class SignupPage extends BasePage {
 
+	//------------------------ WebElements -------------------------------//
 	//Signup page required fields
 	@FindBy(css = "[id='onetrust-accept-btn-handler']")
 	private WebElement btnAcceptCookies;
@@ -33,7 +35,6 @@ public class SignupPage extends BasePage {
 	@FindBy(xpath = "//button[@class='socialtos__btn js__socialtos-signup']")
 	private WebElement btnContinueToSignUp;
 	
-	
 	//Screen fields errors
 	@FindBy(css = "label#nameError")
 	private WebElement lblNameError;
@@ -44,21 +45,23 @@ public class SignupPage extends BasePage {
 	@FindBy(css = "label#termsError")
 	private WebElement lblTermsError;
 	
-	
 	@FindBy(css = ".signup__btn-inner")
 	private WebElement btnSignUpGoogle;
+	
+	
+	//------------------------ Functions -------------------------------//
 
 	/** Verify the signup page is displayed.
 	 * @return Return true if signup page displayed, else false.
 	 */
 	public boolean isSignupPage(){
-		if (seleniumHelper.isElementVisibility(lblPageHeader) && 
+		if (SeleniumHelper.isElementClickable(lblPageHeader) && 
 			lblPageHeader.getText().equals(AppConstant.signupHeading) && 
-			seleniumHelper.isUrlContains("signup")){
-			LogStatus.pass("Signup page displayed successfully.", false);
+			SeleniumHelper.isUrlContains("signup")){
+			Log.pass("Signup page displayed successfully.", false);
 			return true;
 		}
-		LogStatus.pass("Signup page display problem.", true);
+		Log.pass("Signup page display problem.", true);
 		return false;
 	}
 
@@ -67,9 +70,9 @@ public class SignupPage extends BasePage {
 	 * @return this -> Return same class object.
 	 */
 	public SignupPage enterName(String name) {
-			seleniumHelper.clearText(txtName);
-			seleniumHelper.enterText(txtName, name);
-			LogStatus.pass("Entered the Name Successfully : " + name, false);
+			SeleniumHelper.clearText(txtName);
+			SeleniumHelper.enterText(txtName, name);
+			Log.pass("Entered the Name Successfully : " + name, false);
 			return this;
 	}
 
@@ -78,9 +81,9 @@ public class SignupPage extends BasePage {
 	 * @return this -> Return same class object.
 	 */
 	public SignupPage enterWorkEmail(String workEmail){
-		seleniumHelper.clearText(txtWorkEmail);
-		seleniumHelper.enterText(txtWorkEmail, workEmail);
-		LogStatus.pass("Entered the Work Email Successfully : " + workEmail, false);
+		SeleniumHelper.clearText(txtWorkEmail);
+		SeleniumHelper.enterText(txtWorkEmail, workEmail);
+		Log.pass("Entered the Work Email Successfully : " + workEmail, false);
 		return this;
 	}
 
@@ -89,9 +92,9 @@ public class SignupPage extends BasePage {
 	 * @return this -> Return same class object.
 	 */
 	public SignupPage enterPassword(String password){
-			seleniumHelper.clearText(txtPassword);
-			seleniumHelper.enterText(txtPassword, password);
-			LogStatus.pass("Entered the password Successfully : " + password, false);
+			SeleniumHelper.clearText(txtPassword);
+			SeleniumHelper.enterText(txtPassword, password);
+			Log.pass("Entered the password Successfully : " + password, false);
 			return this;
 	}
 	
@@ -99,8 +102,8 @@ public class SignupPage extends BasePage {
 	 * @return this -> Return same class object.
 	 */
 	public SignupPage clickAgreeMiroTerms(){
-			seleniumHelper.clickUsingJavaScript(chkAgreeMiro);
-			LogStatus.pass("Clicked successfully on Terms and condition.", false);
+			SeleniumHelper.clickUsingJavaScript(chkAgreeMiro);
+			Log.pass("Clicked successfully on Terms and condition.", false);
 			return this;
 	}
 	
@@ -108,16 +111,16 @@ public class SignupPage extends BasePage {
 	 * @return this -> Return same class object.
 	 */
 	public void clickThirdPartyAgreeMiroTerms(){
-			seleniumHelper.clickElement(chkThirdPartyTermsAgree);
-			LogStatus.pass("Clicked successfully on Terms and condition.", false);
+			SeleniumHelper.clickElement(chkThirdPartyTermsAgree);
+			Log.pass("Clicked successfully on Terms and condition.", false);
 	}
 	
 	/** Click operation on Signup google button.
 	 * @return this -> Return same class object.
 	 */
 	public SignupPage clickContinueToSignUp(){
-		seleniumHelper.clickUsingJavaScript(btnContinueToSignUp);
-		LogStatus.pass("Clicked successfully on google Signup button.", false);
+		SeleniumHelper.clickUsingJavaScript(btnContinueToSignUp);
+		Log.pass("Clicked successfully on google Signup button.", false);
 		return this;
 	}
 
@@ -125,8 +128,8 @@ public class SignupPage extends BasePage {
 	 * @return this -> Return same class object.
 	 */
 	public void clickSignUpGoogle(){
-		seleniumHelper.clickUsingJavaScript(btnSignUpGoogle);
-		LogStatus.pass("Clicked successfully on google Signup button.", false);
+		SeleniumHelper.clickUsingJavaScript(btnSignUpGoogle);
+		Log.pass("Clicked successfully on google Signup button.", false);
 
 	}
 	
@@ -134,8 +137,8 @@ public class SignupPage extends BasePage {
 	 * @return this -> Return same class object.
 	 */
 	public SignupPage clickGetStartedNow() {
-			seleniumHelper.clickUsingJavaScript(btnGetStartedNow);
-			LogStatus.pass("Clicked successfully on Get started now button.", true);
+			SeleniumHelper.clickUsingJavaScript(btnGetStartedNow);
+			Log.pass("Clicked successfully on Get started now button.", true);
 			return this;
 	}
 
@@ -145,46 +148,46 @@ public class SignupPage extends BasePage {
 	public boolean isError(){
 		boolean flag =false;
 		//verify email confirmation page is not displayed
-		if (!(seleniumHelper.isElementVisibility(lblPageHeader) &&
+		if (!(SeleniumHelper.isElementDisplayed(lblPageHeader) &&
 			  lblPageHeader.getText().equals(AppConstant.emailConfirmPageHeading) &&
-			  seleniumHelper.isUrlContains("email-confirm"))) {
+			  SeleniumHelper.isUrlContains("email-confirm"))) {
 			
 			//Check Name field error
-			String errorMessage = seleniumHelper.getText(lblNameError);
+			String errorMessage = SeleniumHelper.getText(lblNameError);
 			if (!errorMessage.isEmpty()) {
-				LogStatus.info("Name Field error on signup page : " + errorMessage);
+				Log.info("Name Field error on signup page : " + errorMessage);
 				flag=true;
 			}
 
 			//Check Work Email field error
-			errorMessage = seleniumHelper.getText(lblEmailError);
+			errorMessage = SeleniumHelper.getText(lblEmailError);
 			if (!errorMessage.isEmpty()) {
-				LogStatus.info("Work Email field error on signup page : " + errorMessage);
+				Log.info("Work Email field error on signup page : " + errorMessage);
 				flag=true;
 			}
 			
 			//Check Password field error
-			errorMessage = seleniumHelper.getText(lblPswError);
+			errorMessage = SeleniumHelper.getText(lblPswError);
 			if (!errorMessage.isEmpty()) {
-				LogStatus.info("Password field error on signup page : " + errorMessage);
+				Log.info("Password field error on signup page : " + errorMessage);
 				flag=true;
 			}
 
 			//Check Terms and Privacy Policy field error
-			errorMessage = seleniumHelper.getText(lblTermsError);
+			errorMessage = SeleniumHelper.getText(lblTermsError);
 			if (!errorMessage.isEmpty()) {
-				LogStatus.info("Terms and Privacy Policy field error on signup page : " + errorMessage);
+				Log.info("Terms and Privacy Policy field error on signup page : " + errorMessage);
 				flag=true;
 			}
 			if(flag == true)
-				LogStatus.info("One or more field(s) Error on signup page : ");
+				Log.info("One or more field(s) Error on signup page : ");
 		}
 		return flag;
 	}
 	
 	/** Click operation on Accept Cookie button. */
 	public void clickAcceptCookies() {
-			seleniumHelper.clickElement(btnAcceptCookies);
+			SeleniumHelper.clickElement(btnAcceptCookies);
 	}
 
 }

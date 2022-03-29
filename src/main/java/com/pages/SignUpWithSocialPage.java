@@ -1,7 +1,7 @@
 package com.pages;
 
-import com.constants.AppConstant;
-import com.reports.LogStatus;
+import com.reporting.Log;
+import com.utils.SeleniumHelper;
 
 public class SignUpWithSocialPage extends BasePage{
 	
@@ -10,11 +10,11 @@ public class SignUpWithSocialPage extends BasePage{
 	 */
 	public boolean isGoogleSignupPage(){
 		if (
-			seleniumHelper.isUrlContains("google.com")){
-			LogStatus.pass("Google Signin page displayed successfully.", false);
+			SeleniumHelper.isUrlContains("google.com")){
+			Log.pass("Google Signin page displayed successfully.", false);
 			return true;
 		}
-		LogStatus.pass("Google Signin page display problem.", true);
+		Log.pass("Google Signin page display problem.", true);
 		return false;
 	}
 

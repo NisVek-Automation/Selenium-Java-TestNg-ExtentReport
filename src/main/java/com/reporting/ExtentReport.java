@@ -1,13 +1,11 @@
-package com.reports;
+package com.reporting;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 //import com.constants.Constants;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.constants.FrameworkConstant;
-import com.enums.PropertyConfig;
+import com.enums.PropertyEnum;
 import com.utils.CommonFunctionHelper;
 import com.utils.PropertyFileHelper;
 
@@ -28,16 +26,16 @@ public class ExtentReport {
 	 */
 	private ExtentReport() {
 		report = new ExtentReports(getReportPath());
-		report.loadConfig(new File(FrameworkConstant.extentConfigPath));
-		report.addSystemInfo("Testing", FrameworkConstant.reportTitle);
-		report.addSystemInfo("Author", FrameworkConstant.author);
-		report.addSystemInfo("Environment",FrameworkConstant.environment);
+		report.loadConfig(new File(FrameworkConstant.EXTENT_CONFIG_PATH));
+		report.addSystemInfo("Testing", FrameworkConstant.REPORT_TITLE);
+		report.addSystemInfo("Author", FrameworkConstant.AUTHOR);
+		report.addSystemInfo("Environment",FrameworkConstant.ENVIRONMENT);
 	}
 
 	/** Initialize the extent report. */
 	public static void initialize() {
 		ExtentReport report = new ExtentReport();
-		LogStatus.pass("Extent Report is initialized.");
+		Log.pass("Extent Report is initialized.");
 	}
 	
 	/**
@@ -46,8 +44,8 @@ public class ExtentReport {
 	 */
 	public static String getReportPath() {
 		if (reportFilePath.isEmpty()) {
-			if (PropertyFileHelper.get(PropertyConfig.OVERRIDETESTREPORT).equalsIgnoreCase(FrameworkConstant.yes)) {
-				reportFilePath = FrameworkConstant.editExtentreportPath;
+			if (PropertyFileHelper.get(PropertyEnum.OVERRIDETESTREPORT).equalsIgnoreCase(FrameworkConstant.YES)) {
+				reportFilePath = FrameworkConstant.EDIT_EXTENTREPORT_PATH;
 			} else {
 				reportFilePath = FrameworkConstant.newExtentReportPath(CommonFunctionHelper.getCurrentDateTime());
 			}

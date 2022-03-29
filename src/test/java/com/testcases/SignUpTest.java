@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.pages.*;
-import com.reports.LogStatus;
+import com.reporting.Log;
 import com.utils.CommonFunctionHelper;
 import com.utils.ExcelSheetHelper;
 import com.utils.ExceptionHelper;
@@ -23,7 +23,7 @@ public final class SignUpTest extends BaseTest {
 			String workEmail, String password, String status) {
 	
 		homePage = new HomePage();
-		homePage.clickMenuSignUp();
+		homePage.clickSignUp();
 		signUp(name, workEmail, password, status);
 	}
 	

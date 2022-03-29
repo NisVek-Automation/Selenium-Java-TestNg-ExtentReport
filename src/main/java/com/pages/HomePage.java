@@ -2,7 +2,9 @@ package com.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import com.reports.LogStatus;
+
+import com.reporting.Log;
+import com.utils.SeleniumHelper;
 
 /**
  * Home page which contains home page related WebElements and functionality.
@@ -18,18 +20,18 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//*[@class='com-el-button__text' and text()='Start a whiteboard']")
 	private WebElement btnStartWhiteBoard;
 
-	//------------------------ WebElements -------------------------------//
+	//------------------------ Functionss -------------------------------//
 	/** Click operation on Sign up button. */
 	public void clickSignUp() {
-		seleniumHelper.highlightElement(btnSignUp);
-		seleniumHelper.clickUsingJavaScript(btnSignUp);
-		LogStatus.pass("Clicked on Signup free button.", true);
+		SeleniumHelper.scrollToView(btnSignUp);
+		SeleniumHelper.clickUsingJavaScript(btnSignUp);
+		Log.pass("Clicked on Signup free button.", true);
 	}
 
 	/** Click operation on Start Whiteboard button. */
 	public void clickStartWhiteboard() {
-		seleniumHelper.clickElement(btnStartWhiteBoard);
-		LogStatus.pass("Clicked on Start a Whiteboard button.", true);
+		SeleniumHelper.clickElement(btnStartWhiteBoard);
+		Log.pass("Clicked on Start a Whiteboard button.", true);
 	}
 
 }

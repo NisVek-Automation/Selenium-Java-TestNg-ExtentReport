@@ -5,9 +5,9 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import com.reports.ExtentManager;
-import com.reports.ExtentReport;
-import com.reports.LogStatus;
+import com.reporting.ExtentManager;
+import com.reporting.ExtentReport;
+import com.reporting.Log;
 import com.utils.CommonFunctionHelper;
 
 import org.openqa.selenium.WebDriver;
@@ -23,36 +23,58 @@ import org.testng.ITestNGMethod;
  * @author Nisha Vekariya
  * @version 1.0
  */
-public class ListenerClass implements ITestListener {
+public class ListenerClass implements ITestListener, ISuiteListener {
 
 	private static String TestcaseName;
+	
+	/**
+	 * This function will call once Suite starts and helps for following activities.
+	 * <br>
+	 * 1. Initialize the Extent report.
+	 */
+	public void onStart(ISuite suite) {
+		Log.logInfo("****************** Suite : " + suite.getName() + " is started." + " ******************");
+		ExtentReport.initialize();
+	}
+	
+	/**
+	 * This function will call once Suite execution finished and helps for following
+	 * activities. <br>
+	 * 1. Open the execution report automatically if wanted.<br>
+	 * 2. Flush out the report.
+	 */
+	public void onFinish(ISuite suite) {
+		ExtentReport.report.flush();
+		CommonFunctionHelper.openReport();
+		Log.logInfo("****************** Suite : " + suite.getName() + " is finished." + " ******************");
+	}
 	
 	// This will execute before the main test start (@Test)
 	public void onTestStart(ITestResult result) {
 		TestcaseName = result.getName();
 		ExtentManager.setExtentTest(ExtentReport.report.startTest(TestcaseName));
-		LogStatus.pass("********** " + TestcaseName + " is started successfully. **********", true);
+		Log.pass("********** " + TestcaseName + " is started successfully. **********", true);
 	}
 
 	// This will execute only when the test is pass
 	public void onTestSuccess(ITestResult result) {
-		LogStatus.pass(result.getMethod().getDescription() + " test case is passed.", false);
+		Log.pass("TestCase is passed : " + TestcaseName, false);
 		ExtentReport.report.endTest(ExtentManager.getExtTest());
-		LogStatus.pass("********** " + TestcaseName + " is successful. **********", true);
+		Log.pass("********** " + TestcaseName + " is successful. **********", true);
 	}
 
 	// This will execute only on the event of fail test
 	public void onTestFailure(ITestResult result) {
-		LogStatus.fail(result.getMethod().getDescription() + " is failed.", false);
-		LogStatus.fail(result.getThrowable().getMessage());
+		Log.fail("TestCase is failed : " + TestcaseName, false);
+		Log.fail(result.getThrowable().getMessage());
 		ExtentReport.report.endTest(ExtentManager.getExtTest());
-		LogStatus.fail("********** " + TestcaseName + " is not successful. **********", true);
+		Log.fail("********** " + TestcaseName + " is not successful. **********", true);
 
 	}
 
 	// This will execute only if any of the test(@Test) get skipped
 	public void onTestSkipped(ITestResult result) {
-		LogStatus.skip(result.getMethod().getDescription() + " is skipped");
+		Log.skip("TestCase is skipped : " + TestcaseName);
 		ExtentReport.report.endTest(ExtentManager.getExtTest());
 	}
 

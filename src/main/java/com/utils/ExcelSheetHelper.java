@@ -31,7 +31,7 @@ public class ExcelSheetHelper {
 	 * @return Workbook -> It represent the workBook object.
 	 */
 	public Workbook getWorkBook() {
-		try (FileInputStream fileStream = new FileInputStream(FrameworkConstant.DataSheetFileName)) {
+		try (FileInputStream fileStream = new FileInputStream(FrameworkConstant.DATASHEETFILE_PATH)) {
 			workbook = WorkbookFactory.create(fileStream);
 		} catch (FileNotFoundException e) {
 			throw new ExceptionHelper("Excel file not found to read the data.");

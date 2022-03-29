@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 import com.constants.FrameworkConstant;
-import com.enums.PropertyConfig;
+import com.enums.PropertyEnum;
 
 /**
  * Represents the property file reader.
@@ -23,7 +23,7 @@ public class PropertyFileHelper {
 
 	static {
 		try {
-			FileInputStream fis = new FileInputStream(FrameworkConstant.propertyFilePath);
+			FileInputStream fis = new FileInputStream(FrameworkConstant.PROPERTYFILE_PATH);
 			property.load(fis);
 			for (Map.Entry<Object, Object> entry : property.entrySet()) {
 				CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim());
@@ -41,7 +41,7 @@ public class PropertyFileHelper {
 	 * @param Name of property
 	 * @return Value of property
 	 */
-	public static String get(PropertyConfig key) {
+	public static String get(PropertyEnum key) {
 		if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toUpperCase()))) {
 			try {
 				throw new Exception("Property name '" + key.toString().toUpperCase() + "' not found. Please check FrameworkConfig.properties");

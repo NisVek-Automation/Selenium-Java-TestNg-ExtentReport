@@ -1,4 +1,4 @@
-package com.reports;
+package com.reporting;
 
 import java.lang.invoke.MethodHandles;
 
@@ -14,12 +14,12 @@ import com.utils.CommonFunctionHelper;
  * @author Nisha Vekariya
  * @version 1.0
  */
-public class LogStatus {
+public class Log {
 
 	//Initialize Log4j instance
     private static final Logger log =  LogManager.getLogger(MethodHandles.lookup().lookupClass());
     
-	private LogStatus() {
+	private Log() {
 		//private to avoid initialization
 	}
 	
@@ -121,6 +121,14 @@ public class LogStatus {
 		ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.WARNING, message);
 		log.warn(message);
 		Reporter.log(message);
+	}
+	
+	/**
+	 * Report information message in log file only.
+	 * @param Message which need to log.
+	 */
+	public static void logInfo(String message) {
+		log.info(message);
 	}
 	
 }

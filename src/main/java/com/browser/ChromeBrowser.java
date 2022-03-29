@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Reporter;
 
-import com.reports.LogStatus;
+import com.reporting.Log;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -17,7 +17,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  * @author Nisha Vekariya
  * @version 1.0
 */
-public class ChromeBrowser extends BrowserManager{
+public class ChromeBrowser extends BaseBrowser{
 	
 	/** The ChromeOption instance to set the options for Chrome Browser */
 	private ChromeOptions options;

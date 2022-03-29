@@ -13,7 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  * @author Nisha Vekariya
  * @version 1.0
 */
-public class EdgeBrowser extends BrowserManager{
+public class EdgeBrowser extends BaseBrowser{
 	
 	/**
 	 * This method helps to setup the Edge driver for Testing.

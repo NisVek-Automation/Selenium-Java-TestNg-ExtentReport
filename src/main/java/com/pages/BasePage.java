@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.browser.DriverManager;
-import com.reports.LogStatus;
-import com.utils.SeleniumFunctionHelper;
+import com.reporting.Log;
+import com.utils.SeleniumHelper;
 
 /** 
  * Represents a super class, which contains common elements and functionality in the application.
@@ -16,21 +16,22 @@ import com.utils.SeleniumFunctionHelper;
 */
 public class BasePage {
 	
-	public SeleniumFunctionHelper seleniumHelper = new SeleniumFunctionHelper();
-	
+	//------------------------ WebElements -------------------------------//
 	@FindBy(css=".signup__title-form") public WebElement lblPageHeader;
 	@FindAll({@FindBy(xpath = "//*[@id='Sign-up-free']"), 
-		@FindBy(xpath = "//*[@aria-label='Header']//div[text()='Sign Up']")}) 
-	public WebElement btnMenuSignUp;
+			  @FindBy(xpath = "//*[@aria-label='Header']//div[text()='Sign Up']")}) 
+			public WebElement btnMenuSignUp;
 	
+	
+	//------------------------ Functions -------------------------------//
 	protected BasePage(){
 		PageFactory.initElements(DriverManager.getDriver(), this);
 	}
 	
 	/** Click operation on Sign up button on menu bar. */
 	public void clickMenuSignUp() {
-		seleniumHelper.clickUsingJavaScript(btnMenuSignUp);
-		LogStatus.pass("Clicked on Signup free button on menu bar", true);
+		SeleniumHelper.clickUsingJavaScript(btnMenuSignUp);
+		Log.pass("Clicked on Signup free button on menu bar", true);
 	}
 
 }
