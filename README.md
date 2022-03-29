@@ -95,11 +95,7 @@ Automation framework dependancies are mentioned in the <b>POM.xml</b> file, and 
 
 How to use this framework?
 1. Clone the repository to your workspace.
-
-```sh
-git clone https://github.com/NisVek-Automation/Selenium-Java-TestNg-ExtentReport.git
-```
-
+`sh git clone https://github.com/NisVek-Automation/Selenium-Java-TestNg-ExtentReport.git`
 2. The `DataSheet.xlsx` under the `src/test/resources` folder is used for data driven testing. 
 3. Mark the 'y' in `exection` column to exceute that data set for testing.
 4. Right click on the `TestNG.xml` file and Run as `TestNG Suite`. You can even run as `mvn test` which will trigger the TestNG.xml file.
