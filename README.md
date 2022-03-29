@@ -116,7 +116,8 @@ How to use this framework?
 
 
  ### 📚 Reusable framework utilitites
- 
+  
+```
  📚Selenium-Java-TestNG-Docker
 └── 📁src/main/java
 |   ├──📁com/browser
@@ -161,11 +162,12 @@ How to use this framework?
     ├── 📄extentreport.xml: ExtentReport settings.
     ├── 📄log4j2.properties: log4j settings.
     └── 📄TestRunDetails.properties: Framework related settings.
-  
+```
 ---
   
 ##  👀 Logs and Reporting <a name = "logs-reporting"></a>
 
+```
 📚Selenium-Java-TestNG-Docker
 ├── 📁logs
 |   └── 📄TestLog.log: Detailed execution log.
@@ -173,7 +175,7 @@ How to use this framework?
 |   └── 📄Extent-TestReport.html: Execution Extent report in HTML.
 └── 📁screenShots
     └── 📄<TestCaseName>: Each testcases screenshots available in respective testcase name folder.
-
+```
   Note: For understanding purpose, all above files avaialbe in this repository.
 
 ---
