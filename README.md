@@ -163,6 +163,7 @@ How to use this framework?
     ├── 📄log4j2.properties: log4j settings.
     └── 📄TestRunDetails.properties: Framework related settings.
 ```
+
 ---
   
 ##  👀 Logs and Reporting <a name = "logs-reporting"></a>
@@ -177,6 +178,8 @@ How to use this framework?
     └── 📄<TestCaseName>: Each testcases screenshots available in respective testcase name folder.
 ```
   Note: For understanding purpose, all above files avaialbe in this repository.
+  
+  ![Selenium reporting](https://github.com/NisVek-Automation/NisVek-Automation/blob/main/SeleniumJavaExtentReport_Resources/SeleniumJavaReport.gif)
 
 ---
   
