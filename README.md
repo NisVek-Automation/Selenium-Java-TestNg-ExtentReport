@@ -114,99 +114,67 @@ How to use this framework?
 ![Framework](https://github.com/NisVek-Automation/Selenium-Java-TestNg-ExtentReport/blob/main/documents/AutomationFramework.jpg)
 
 
+
  ### 📚 Reusable framework utilitites
  
- <h5>src/main/java/com/browser</h5>
+ 📚Selenium-Java-TestNG-Docker
+└── 📁src/main/java
+|   ├──📁com/browser
+|   |   ├── 📄BaseBrowser.java: Parent abstract class for browsers.
+|   |   ├── 📄EdgeBrowser.java: Represents an Edge Browser related activities.
+|   |   ├── 📄ChromeBrowser.java: Represents a Google Chrome Browser related activities.
+|   |   ├── 📄Driver.java: Used for selecting browser type, open the URL activities, etc.
+|   |   └── 📄DriverManager.java: Handles the thread local for the Webdriver type.
+|   ├──📁com/constants
+|   |   ├── 📄AppConstant.java: Represents application specific property/constant values.
+|   |   └── 📄FrameworkConstant.java: Represents framework specific property/constant values.
+|   ├──📁com/enums
+|   |   ├── 📄BrowserName.java: Represent enum for the browsers name.
+|   |   └── 📄PropertyEnum.java: Represents enum for property key values.
+|   ├──📁com/utils
+|   |   ├── 📄SeleniumFunctionHelper.java: Common functionality for framework such as click, enter data in field, etc.
+|   |   ├── 📄PropertyHelper.java: Represents the property file reader.
+|   |   ├── 📄ExceptionHelper.java: Exception helper to create the custom exception.
+|   |   ├── 📄ExcelSheetHelper.java: Read the test data from excel file for testing.
+|   |   └── 📄CommonFunctionHelper.java: Common functionality for framework such as takescreenshot, etc.
+|   ├──📁com/pages
+|   |   ├── 📄BasePage.java: Represents POM parent class.
+|   |   ├── 📄HomePage.java: Represent POM for Home page.
+|   |   ├── 📄LoginPage.java: Represents Login page - Page Object model class.
+|   |   ├── 📄SignupPage.java: Represent Signup page. - Page Object model class.
+|   |   └── 📄SignUpWithSocialPage.java: Represent POM for all social Signup activities.
+|   ├──📁com/listeners
+|   |   ├── 📄AnnotationTransformer.java: Represents annotation transformer which helps during rerun the test cases.
+|   |   ├── 📄ListenerClass.java: Represents a ListenerClass derived from ITestListener.
+|   |   └── 📄RetryFailedTestCases.java: Represents how many time failure tests need to rerun.
+|   ├──📁com/reporting
+|   |   ├── 📄ExtentManager.java: Handles the thread local for the ExtentTest type.
+|   |   ├── 📄ExtentReport.java: ExtentReport functionality.
+|   |   └── 📄LogStatus.java: Provides log in report and log file.
+├──📁src/test/java
+|   ├──📁com/testcases
+|   |   ├── 📄BaseTest.java: Parent class of testcases.
+|   |   ├── 📄SignUpTest.java: Signup related testcases. 
+|   |   └── 📄SignupUsingSocialTest.java: Signup process with social related testcases.
+└──📁src/test/resources/
+    ├── 📄TestData.xlsx: Testcases use the data for testing from here.
+    ├── 📄extentreport.xml: ExtentReport settings.
+    ├── 📄log4j2.properties: log4j settings.
+    └── 📄TestRunDetails.properties: Framework related settings.
   
-| Files     | Description |
-| ---         | ---       |
-| BrowserManager.java | Parent abstract class for browsers.         |
-| ChromeBrowser.java | Represents a Google Chrome Browser related activities.         |
-| EdgeBrowser.java     | Represents an Edge Browser related activities.   |
-| DriverManager.java    | Handles the thread local for the Webdriver type.    |
-| Driver.java    | Used for selecting browser type, open the URL activities, etc.    |
-
-<h5>src/main/java/com/constants</h5>
-  
-| Files     | Description |
-| ---         | ---       |
-| AppConstant.java |  Represents application specific property/constant values.        |
-| FrameworkConstant.java |  Represents framework specific property/constant values.        |
-
-<h5>src/main/java/com/utils</h5>
-  
-| Files     | Description |
-| ---         | ---       |
-| SeleniumFunctionHelper.java     | Common functionality for framework such as click, enter data in field, etc.    |
-| PropertyFileHelper.java    | Represents the property file reader.  |
-| ExceptionHelper.java | Exception helper to create the custom exception.        |
-| ExcelSheetHelper.java     | Read the test data from excel file for testing.   |
-| CommonFunctionHelper.java    | Common functionality for framework such as takescreenshot, etc.    |
-
-<h5>src/main/java/com/pages</h5>
-  
-| Files     | Description |
-| ---         | ---       |
-| BasePage.java |  Represents POM parent class.         |
-| HomePage.java     |  Represent POM for Home page.  |
-| LoginPage.java  |  Represents Login page - Page Object model class  |
-| SignupPage.java    | Represent Signup page. - Page Object model class    |
-| SignUpWithSocialPage.java    | Represent POM for all social Signup activities.  |
-
-
-<h5>src/main/java/com/listeners</h5>
-  
-| Files     | Description |
-| ---         | ---       |
-| AnnotationTransformer.java |  Represents annotation transformer which helps during rerun the test cases.        |
-| ListenerClass.java |  Represents a ListenerClass derived from ITestListener.        |
-| RetryFailedTestCases.java     | Represents how many time failure tests need to rerun |
-  
-  
-<h5>src/main/java/com/reports</h5>
-  
-| Files     | Description |
-| ---         | ---       |
-| ExtentManager.java |  Handles the thread local for the ExtentTest type.         |
-| LogStatus.java     |  Provides log in report and log file.  |
-| ExtentReport.java    |  ExtentReport functionality.  |
-  
-
-### ⏳ Application under Testcases ⌛
-  
-  <h5>src/test/java/testcases</h5>
-  
-| Files     | Description |
-| ---         | ---       |
-| BaseTest.java |  Parent class of testcases.        |
-| SignUpTest.java     |  Signup related testcases.  |
-| SignupUsingSocialTest.java     |  Signup process with social related testcases.  |
-
-
-### 📉Configuration and 📋Test Datasheet
-  
-  <h5>src/test/resources</h5>
-  
-| Files     | Description |
-| ---         | ---       |
-| TestData.xlsx |  Testcases use the data for testing from here.        |
-| extentreport.xml   |  ExtentReport settings. |
-| log4j2.properties |  log4j settings.        |
-| TestRunDetails.properties     |  Framework related settings.  |
-
 ---
-
+  
 ##  👀 Logs and Reporting <a name = "logs-reporting"></a>
 
- <h5>Where to find the log and Reporting?</h5>
-  
-| Folder/File     | Description |
-| ---         | ---       |
-| logs/TestLog.log |  Detailed execution log.        |
-| reports/Extent-TestReport.html  |  Execution Extent report in HTML. |
-| screenShots/TestCaseName/ |  Each testcases screenshots available in respective testcase name folder       |
+📚Selenium-Java-TestNG-Docker
+├── 📁logs
+|   └── 📄TestLog.log: Detailed execution log.
+├── 📁report
+|   └── 📄Extent-TestReport.html: Execution Extent report in HTML.
+└── 📁screenShots
+    └── 📄<TestCaseName>: Each testcases screenshots available in respective testcase name folder.
 
-Note: For understanding purpose, all above files avaialbe in this repository.
+  Note: For understanding purpose, all above files avaialbe in this repository.
 
 ---
   
