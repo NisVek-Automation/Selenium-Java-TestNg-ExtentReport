@@ -36,7 +36,6 @@ public class SeleniumHelper {
 	/**
 	 * This method clear the value on the given element.
 	 * @param element -> WebElement in which value needs to clear.
-	 * @param textToEnter -> Value to be cleared.
 	 */
 	public static void clearText(final WebElement element) {
 		explicitWaitForElementToBeClickable(element).clear();
@@ -114,7 +113,7 @@ public class SeleniumHelper {
 	
 	/**
 	 * This method highlight the webelement.
-	 * @param locator -> WebElement which need to highlight.
+	 * @param element -> WebElement which need to highlight.
 	 */
 	public static void highlightElement(WebElement element) {
 		((JavascriptExecutor)DriverManager.getDriver())
@@ -123,7 +122,7 @@ public class SeleniumHelper {
 	
 	/**
 	 * Explicit wait for element to be present.
-	 * @param by to locate web elements
+	 * @param locator to locate web elements
 	 * @return WebElement
 	 */
 	public static WebElement explicitWaitForElementToBeVisible(final WebElement locator) {
@@ -133,7 +132,7 @@ public class SeleniumHelper {
 	
 	/**
 	 * This method verify the the current URL contains the searched element.
-	 * @param Pattern which needs to search in URL.
+	 * @param searchPattern which needs to search in URL.
 	 * @return Returns true if pattern exist in current URL, else false.
 	 */
 	public static boolean isUrlContains(final String searchPattern) {

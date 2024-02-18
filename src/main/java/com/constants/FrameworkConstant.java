@@ -25,7 +25,7 @@ public final class FrameworkConstant {
 
 	// Wait timing
 	public static final Duration WAIT_TIME = Duration.ofMillis(13000);
-	public static final int EXPLICIT_MAXWAIT = 10;
+	public static final Duration EXPLICIT_MAXWAIT = Duration.ofMillis(15000);
 	public static final int EXPLICIT_MINWAIT = 2;
 	
 	// Screenshot paths

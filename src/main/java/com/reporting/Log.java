@@ -2,6 +2,7 @@ package com.reporting;
 
 import java.lang.invoke.MethodHandles;
 
+import com.browser.DriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Reporter;
@@ -40,7 +41,7 @@ public class Log {
 	 */
 	public static void pass(String message, boolean isScreenShotRequired) {
 		ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.PASS, message);
-		if(isScreenShotRequired) {
+		if(isScreenShotRequired && DriverManager.getDriver() != null) {
 			ExtentManager.getExtTest().log(com.relevantcodes.extentreports.LogStatus.PASS, message,
 					CommonFunctionHelper.getBase64Image());
 		}

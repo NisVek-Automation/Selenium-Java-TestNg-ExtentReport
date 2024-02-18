@@ -60,7 +60,6 @@ public final class CommonFunctionHelper {
 	 * Gives a base64 image which is used to append the screenshots in the
 	 * extent report. Converting to base64 format avoids screenshots broken
 	 * image.
-	 * @param screenshotpath --> path of screenshot.
 	 * @return base64 -> return the encoded image string.
 	 */
 	public static String getBase64Image() {
